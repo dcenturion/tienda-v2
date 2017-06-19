@@ -1,0 +1,131 @@
+{% extends 'layouts/_master.twig' %}
+
+{% block main %}
+
+    <!-- begin content -->
+    <div class="row app-container">
+        <div class="col-xs-12">
+
+            <br />
+            <br />
+
+            <div class="center-block shopping-cart-center-block">
+
+                {###############################################}
+                {# Información de demostración sobre productos #}
+                {% set products = [{
+                    categoryName: 'Libro | Finanzas',
+                    name        : 'Invierte.pe',
+                    price       : 90.00,
+                    regularPrice: 90.00,
+                    quantity    : 1
+                },{
+                    categoryName: 'Tecnología | Celulares',
+                    name        : 'Huawei P9',
+                    price       : 90.00,
+                    regularPrice: 85.00,
+                    quantity    : 1
+                },{
+                    categoryName: 'Cursos | Diplomado',
+                    name        : 'Diplomado de administración',
+                    price       : 54.00,
+                    regularPrice: 54.00,
+                    quantity    : 1
+                }] %}
+
+                {###############################################}
+
+                {# Creando la lista de productos #}
+                <div class="row shopping-cart-product-list">
+                    <div class="col-xs-12">
+
+                        <h3 class="text-uppercase"><strong>Carrito de compras</strong></h3>
+
+                        <br />
+                        <br />
+
+                        {# Creando la linea del proceso de compra #}
+                        {% include 'shopping-cart/partials/_checkout-line.twig' with { 
+                            'step': 1
+                        } %}
+
+                        <br />
+                        <br />
+
+                        <div class="row">
+                            <div class="col-xs-12">
+
+                                {% if products|length %}
+                                    <div class="panel">
+                                        <div class="table-responsive">
+
+                                            {# Tabla #}
+                                            <table class="table">
+                                                <tr>
+                                                    <th>Artículo</th>
+                                                    <th class="text-center">Cantidad</th>
+                                                    <th class="text-center">Precio</th>
+                                                    <th class="text-center"></th>
+                                                </tr>
+
+                                                {% for product in products %}
+
+                                                    <tr>
+                                                        <td>
+                                                            <h4><strong>{{ product.name }}</strong></h4>
+                                                            <span>{{ product.categoryName }}</span>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <strong><span class="quantity">{{ product.quantity }}</span></strong>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <strong><span class="price">${{ product.price|number_format(2) }}</span></strong>
+                                                            {% if product.price != product.regularPrice %}
+                                                                <br />
+                                                        <strike><span>${{ product.regularPrice|number_format(2) }}</span></strike>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <i class="glyphicon glyphicon-trash"></i>
+                                                    </td>
+                                                    </tr>
+
+                                                {% endfor %}
+
+                                                {# Sumarización #}
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <h4><strong>Total a pagar:</strong></h4>
+                                                    </td>
+                                                    <td colspan="2" class="text-center text-uppercase">
+                                                        <strong><span class="total-price">$234.00</span></strong>
+                                                        <br />
+                                                        <br />
+                                                        <a href="/shopping-cart/checkout" class="btn btn-sell-now"><strong>Pagar</strong></a>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <p class="text-primary">No tienes productos añadidos en tu carrito de compras.</p>
+                                {%endif%}
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <br />
+                <br />
+                <br />
+
+            </div>
+        </div>
+    </div>
+    <!-- end content -->
+
+{% endblock main %}

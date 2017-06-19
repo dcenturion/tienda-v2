@@ -1,0 +1,392 @@
+<div class="row app-header">
+    <div class="col-xs-12">
+
+        {# Para escritorio, tablet y móvil #}
+        <div class="row app-header-desktop">
+            <div class="col-xs-12">
+
+                {# Barra de presentación #}
+                <div class="row presentation-bar">
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 text-center">
+                                <a href="/">
+                                    <img class="img-responsive" src="/_vistas/theme/eguru-2017/images/eguru-logo.png" alt="Logo image">
+                                </a>
+                            </div>
+                            <div class="col-xs-12 col-md-6 text-center">
+                                <br class="hidden-xs hidden-sm" />
+                                <div class="btn-group btn-group-social-media">
+                                    <a href="/" target="_blank" class="btn btn-default"><i class="icon-facebook"></i></a>
+                                    <a href="/" target="_blank" class="btn btn-default"><i class="icon-instagram"></i></a>
+                                    <a href="/" target="_blank" class="btn btn-default"><i class="icon-google-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <br class="hidden-xs hidden-sm" />
+                        <div class="dropdown dropdown-shopping-cart">
+                            <a href="javascript:null" class="btn btn-default dropdown-toggle text-uppercase" id="dd-shopping-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="glyphicon glyphicon-shopping-cart"></i> 
+                                <strong>
+                                    <span>(3)</span> Artículos
+                                </strong>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-shopping-cart">
+                                <li class="dropdown-header text-uppercase">Productos añadidos</li>
+                                <li>
+                                    <a href="javascript:null">
+                                        <span>Invierte.pe</span>
+                                        <br />
+                                        <em>(1) x $90.00</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:null">
+                                        <span>Huawei P9</span>
+                                        <br />
+                                        <em>(1) x $90.00</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:null">
+                                        <span>Diplomado en administración</span>
+                                        <br />
+                                        <em>(1) x $54.00</em>
+                                    </a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="javascript:null"><strong>Total: $234.00</strong></a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="/shopping-cart" class="text-uppercase"><strong>Ver carrito de compras</strong></a>
+                                </li>
+                                <li>
+                                    <a href="/shopping-cart/checkout" class="text-uppercase"><strong>Ir a pagar</strong></a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        {# Para pantallas de tablet #}
+                        <br class="hidden-xs hidden-md hidden-lg" />
+                        
+                        <a href="/" class="btn btn-menu hidden"><i class="glyphicon glyphicon-th"></i></a>
+
+                        <br class="hidden-md hidden-lg" />
+
+                        {# Evaluando si se ha cargado una session de usuario #}
+                        {% if app.session.userSessionStarted %}
+
+                            <div class="dropdown">
+                                <a href="javascript:null" class="btn btn-presentation dropdown-toggle text-uppercase" id="dd-user-profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="glyphicon glyphicon-user"></i> 
+                                    <strong>
+                                        <span class="hidden-xs">Bienvenido, </span>Diego A.
+                                    </strong>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-profile">
+                                    <li>
+                                        <a href="/order">
+                                            <span>Mis compras</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/wishlist">
+                                            <span>Favoritos</span>
+                                        </a>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header text-uppercase">Mi cuenta</li>
+                                    <li>
+                                        <a href="/user/edit">
+                                            <span>Editar perfil</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/user/logout">
+                                            <span>Cerrar sesión</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        {% else %}
+
+                            <div class="dropdown">
+                                <a href="javascript:null" class="btn btn-presentation dropdown-toggle text-uppercase" id="dd-form-login" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="glyphicon glyphicon-user"></i> <strong>Mi cuenta</strong>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-form-login">
+                                    <li>
+
+                                        {# Creando el formulario de inicio de sesión #}
+                                        <form class="row form-login" method="post" action="/user/login">
+                                            <div class="col-xs-12">
+                                                <div class="row">
+                                                    <div class="col-xs-6 no-padding-right">
+                                                        <button type="button" class="btn btn-block btn-facebook">
+                                                            <i class="icon-facebook"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-xs-6 no-padding-left">
+                                                        <button type="button" class="btn btn-block btn-google">
+                                                            <i class="icon-google-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <br />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <h4 class="text-uppercase"><strong>Entra a Egurú</strong></h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="form-group">
+                                                                    <input type="text" name="email" class="form-control" placeholder="Correo electrónico">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-12">
+                                                                <div class="form-group">
+                                                                    <input type="password" name="password" class="form-control" placeholder="Contraseña">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-12 text-right">
+                                                                <div class="form-group">
+                                                                    <button type="submit" class="btn btn-presentation text-uppercase">
+                                                                        <strong>Ingresar</strong>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-12 text-center">
+                                                                <div class="form-group">
+                                                                    <p>
+                                                                        <a href="javascript:null" data-toggle="modal" data-target="#modal-recover-account">¿Olvidaste tu contraseña?</a>
+                                                                    </p>
+                                                                    <p class="hidden-sm hidden-md hidden-lg">
+                                                                        <a href="/user/register">Regístrate en eGurú</a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="/user/register" class="btn btn-presentation text-uppercase hidden-xs">
+                                <i class="glyphicon glyphicon-plus-sign"></i> <strong>Regístrate</strong>
+                            </a>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+
+                {# Barra de navegación #}
+                <div class="row navigation-bar">
+                    <div class="col-xs-12">
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                {# Brand and toggle get grouped for better mobile display #}
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nv-main" aria-expanded="false">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+
+                                {# Collect the nav links, forms, and other content for toggling #}
+                                <div class="collapse navbar-collapse" id="nv-main">
+                                    <ul class="nav navbar-nav navbar-left text-uppercase">
+                                        <li class="active"><a href="/category/books"><strong>Libros</strong></a></li>
+                                        <li><a href="/category/courses"><strong>Cursos</strong></a></li>
+                                        <li><a href="/category/technology"><strong>Tecnología</strong></a></li>
+                                        <li><a href="/category/software"><strong>Software</strong></a></li>
+                                    </ul>
+                                    <form method="get" action="/" class="navbar-form navbar-right">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Escribe aquí para buscar">
+                                                <span class="input-group-btn">
+                                                    <button class="btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{# Modal para el formulario de recuperar cuenta #}
+<div class="modal fade" id="modal-recover-account" tabindex="-1" role="dialog" aria-labelledby="modal-recover-account-title">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-xs-10 col-sm-8 col-xs-offset-1 col-sm-offset-2">
+
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <h3 class="text-uppercase" id="modal-recover-account-title">
+                                    <strong>Recuperar contraseña</strong>
+                                </h3>
+                                <p>
+                                    Para restaurar tu contraseña, ingresa tu dirección 
+                                    de correo electrónico. Es posible que tengas que 
+                                    consultar tu bandeja de spam o desbloquear la dirección
+                                    no-reply@eguru.pe
+                                </p>
+                                <br />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+
+                                {# Formulario de recuperación de cuenta #}
+                                <form class="row" method="post" action="/user/recover-account-request">
+                                    <div class="col-xs-12">
+
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="form-group">
+                                                    <input type="text" name="email" class="form-control" placeholder="Correo electrónico">
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="form-group">
+                                                    <button type="button" class="btn btn-confirm text-uppercase" data-toggle="modal" data-target="#modal-recover-account-error">
+                                                        <strong>Recuperar</strong>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+
+                                <br />
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# Modal para el mensaje de error al recuperar cuenta #}
+<div class="modal fade" id="modal-recover-account-error" tabindex="-1" role="dialog" aria-labelledby="modal-recover-account-error-title">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <h3 class="text-uppercase" id="modal-recover-account-error-title">
+                                    <strong>Error</strong>
+                                </h3>
+                                <p>
+                                    El correo ingresado no se encuentra registrado.
+                                </p>
+                                <br />
+                            </div>
+                            <div class="col-xs-12 text-center">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-confirm text-uppercase" data-toggle="modal" data-target="#modal-recover-account-confirm">
+                                        <strong>Regresar</strong>
+                                    </button>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# Modal para el mensaje de confirmación de la solicitud de recuperar cuenta #}
+<div class="modal fade" id="modal-recover-account-confirm" tabindex="-1" role="dialog" aria-labelledby="modal-recover-account-confirm-title">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <h3 class="text-uppercase" id="modal-recover-account-confirm-title">
+                                    <strong>Revisa tu correo electrónico</strong>
+                                </h3>
+                                <p>
+                                    Hemos enviado un mensaje con las 
+                                    instrucciones necesarias para que puedas
+                                    reestablecer tu contraseña.
+                                </p>
+                                <br />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{###############################################}
+{# Script de demostración (Debe ser modificado o eliminado obligatoriamente) #}
+<script>
+    $(document).ready(function () {
+        $('#modal-recover-account .btn-confirm').on('click', function (e) {
+            $('#modal-recover-account').modal('hide');
+        });
+        $('#modal-recover-account-error .btn-confirm').on('click', function (e) {
+            $('#modal-recover-account-error').modal('hide');
+        });
+    });
+</script>
+{###############################################}

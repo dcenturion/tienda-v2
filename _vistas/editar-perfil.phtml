@@ -1,0 +1,103 @@
+
+<div class="row app-container">
+    <div class="col-xs-12">
+
+        <br>
+        <br>
+
+        <div class="center-block shopping-cart-center-block">
+
+            <div class="row shopping-cart-product-list">
+                <div class="col-xs-12">
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3 class="text-uppercase"><strong>Editar perfil</strong></h3>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+
+                            <form class="row" action='javascript:void(null);'  enctype='multipart/form-data' id="formularioDatosUsuario">
+                                <div class="col-xs-12">
+
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <h4><strong>Información personal</strong></h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" name="name" class="form-control" placeholder="Nombres" value="<?= $datosUser->Nombre; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" name="lastname" class="form-control" value="<?= $datosUser->Descripcion; ?>" placeholder="Apellidos">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" name="email" class="form-control"    value="<?= $datosUser->Email; ?>" placeholder="Correo electrónico" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" name="phone" class="form-control" value="<?= $datosUser->Telefono; ?>" placeholder="Teléfono">
+                                            </div>
+                                        </div>										
+										
+                                        <div class="col-xs-12 text-right">
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-confirm" id="botonFormA">
+                                                    <strong>ACTUALIZAR</strong>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+
+                   
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+        </div>
+    </div>
+</div>
+
+<script>	
+$('#botonFormA').on('click', '', function (e) {
+	confirmarPago();
+});				
+function confirmarPago(codigoItem) {
+        ///lanzamiento del API de culqui
+		
+		///Si el retorno del proceso de pago mediante culqui es TRUE, cierra la proforma 
+	    var ruta = '/system/_vistas/se_pedidos.php?Main=ActualizaUsuario&entidad=<?php echo $empresa; ?>&CodigoUsuario=<?php echo $CodigoUsuario; ?>';
+        alertify.success("Datos actualizados");
+		$.ajax({                        
+           type: "POST",                 
+           url: ruta,                     
+           data: $("#formularioDatosUsuario").serialize(), 
+           success: function(data)             
+           {
+			 location.href="/editar-perfil/entidad/<?php echo $empresa; ?>";
+           }
+        });
+		///Si el retorno del proceso de pago mediante culqui es FALSE, deja a la proforma en un estado de intento fallido 		
+}	
+</script>

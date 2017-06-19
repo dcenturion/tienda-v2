@@ -1,0 +1,135 @@
+<div class="row app-container">
+    <div class="col-xs-12">
+        <br>
+        <br>
+
+        <div class="center-block home-product-list-center-block">
+
+
+            <div class="row product-list">
+                <div class="col-xs-12">
+                    <h3 class="text-uppercase"><strong>Favoritos</strong></h3>
+
+                    <div class="row">
+						<?php
+							foreach ($productosPreferidos as $key => $reg) {
+						?>	
+                        <div class="col-xs-12 col-sm-6 col-md-3" id="card_<?=$reg->AliasId;?>">
+
+                            <div class="row card-product">
+                                <div class="col-xs-12">
+                                    <div class="row card-body">
+                                        <div class="col-xs-12">
+                                            <div class="row">
+                                                <div class="col-xs-12 text-center">
+                                                    <img class="img-responsive" src="/system/_articulos/<?=$reg->ImagenPresentacionA;?>" alt="Product image">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 text-center">
+                                                    <a href="/producto-programa-educativo/id/<?= $reg->AliasId; ?>/entidad/<?= $reg->SubDominio; ?>">
+                                                        <h4><strong><?=$reg->Nombre; ?></strong></h4>
+                                                    </a>
+                                                    <p>
+                                                        <?=$reg->Categoria ." | ". $reg->SubCategoria; ?>
+                                                    </p>
+                                                    <p>
+														 <?=$reg->Descripcion; ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row card-footer">
+                                        <div class="col-xs-12">
+                                            <div class="row">
+												<div class="col-xs-12 text-center">
+												
+													<a href="#" class="btn btn-share"><i class="icon-share-square"></i></a>
+													<?php 
+														if($reg->Moneda == "Soles"){ $simboloMoneda= "S/. "; }else{ $simboloMoneda= "$ "; }
+														
+														if($reg->Precio == 0){
+															
+															if($reg->TipoArticulos == 2 ){
+												                echo '<a href="/producto-programa-educativo/id/'.$reg->AliasId.'/entidad/'.$reg->SubDominio.'" class="btn btn-sell"><strong>Inscríbete</strong></a>';														
+															}else{
+												                echo '<a href="/" class="btn btn-sell"><i class="glyphicon glyphicon-shopping-cart"></i> <strong>GRATIS</strong></a>';																
+															}
+															
+													?>		
+													<?php }else{ ?>
+													
+															<a href="#<?=$reg->AliasId;?>" class="btn btn-sell" id="btn_<?=$reg->AliasId;?>" onclick="seleccionaProducto('<?=$reg->AliasId;?>','<?=$reg->SubDominio;?>');" ><i class="glyphicon glyphicon-shopping-cart"></i> <strong><?= $simboloMoneda . $reg->Precio; ?></strong></a>								
+													<?php }?>
+													
+												</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                
+						</div>
+						<?php
+							}
+						?>	
+
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+
+								 
+function seleccionaProducto(idProducto,entidad) {
+	
+	    var ruta = '/system/_vistas/se_pedidos.php?Main=CapturaPedido&ListaPreferencias=EliminaArticulo';
+	    var parametros = {
+			'idProducto': idProducto,
+			'entidad': entidad,
+		};
+		
+		alertify.log("Procesando Datos..");
+	
+		$.ajax({
+			data: parametros,
+			url: ruta,
+			type: 'get',
+			async: true,
+			success: function(response) {
+				// alertify.success(response);
+				var l_a_json = eval('(' + response + ')');
+				var mensaje = l_a_json["msj"];
+				var nroItem = l_a_json["nro_articulos"];
+				
+				
+				var id_btn_compras = "btn_"+idProducto;
+			    $("#"+id_btn_compras+"").attr("href","/informacion-pago/entidad/"+entidad+"/pedido/<?=$codPedido; ?>");
+			    $("#"+id_btn_compras+"").attr("style","background-color:#ff999a;");
+			    $("#"+id_btn_compras+"").html("IR A PAGAR");
+							
+				alertify.success(mensaje);
+				$('#indicador-pedido').html(nroItem);
+				$('#indicador-pedido').fadeIn(1500);
+				// $("#btn_"+idProducto).
+				// var explode = function(){
+					// location.href="/favoritos/entidad/<?php echo $empresa; ?>";
+				// };
+				// setTimeout(explode, 3000);					
+				
+			}
+		});
+
+}
+
+
+
+</script>

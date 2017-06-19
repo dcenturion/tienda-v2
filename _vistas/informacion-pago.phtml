@@ -1,0 +1,269 @@
+<div class="row app-container">
+    <div class="col-xs-12">
+        <br>
+        <br>
+        <div class="center-block shopping-cart-center-block">
+            <div class="row shopping-cart-product-list"   >
+                <div class="col-xs-12">
+                    <h3 class="text-uppercase"><strong>Información de pago</strong></h3>
+                    <br>
+                    <br>
+                    <div class="row checkout-line">
+                        <div class="col-xs-12">
+                            <div class="row" id="msj_proceso">	    
+							</div>
+                            <div class="row">
+                                <div class="col-xs-4 checkout-step completed text-center">
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a href="/carrito-compras/entidad/<?=$empresa; ?>/pedido/<?=$pedido; ?>" class="checkout-step-circle"><strong>1</strong></a>
+                                    <span>Verifica tus datos</span>
+                                </div>
+                                <div class="col-xs-4 checkout-step active text-center">
+                                    <div class="progress">
+                                        <div class="progress-bar "></div>
+                                    </div>
+                                    <a href="/informacion-pago/entidad/<?=$empresa; ?>/pedido/<?=$pedido; ?>" class="checkout-step-circle"><strong>2</strong></a>
+                                    <span>Información de pago</span>
+                                </div>
+                                <div class="col-xs-4 checkout-step  text-center">
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a class="checkout-step-circle"><strong>3</strong></a>
+                                    <span>¡Listo!</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <form class="row" method="post" action='javascript:void(null);'  enctype='multipart/form-data' id="formularioDatosFacturacion" >
+                        <div class="col-xs-12 col-sm-6">
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h4><strong>Datos de facturación</strong></h4>
+									
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <input type="text" name="nroDocumento" class="form-control" placeholder="DNI o RUC">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <input type="text" name="nombre" class="form-control" value="<?= $datosUser->Nombre; ?>" placeholder="Razón social" >
+                                    </div>
+                                </div>
+								
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+									    <?php
+										    if($datosUser->Email ==""){
+												$readonly = "";
+											}else{
+												$readonly = "readonly";												
+											}
+										?>
+                                        <input type="text" name="email" class="form-control" value="<?= $datosUser->Email; ?>" placeholder="Email"  <?=$readonly; ?>>
+                                    </div>
+                                </div>
+								
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <input type="text" name="telefono" class="form-control" value="<?= $datosUser->Telefono; ?>" placeholder="Teléfono"  >
+                                    </div>
+                                </div>
+																										
+								
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h4><strong>Dirección de facturación</strong></h4>
+                                </div>
+								<div id="MensajeId">
+                                  
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <input type="text" name="street" class="form-control" placeholder="Calle" value="<?=$datosUltimoPedido->Direccion; ?>">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <input type="text" name="city" class="form-control" placeholder="Ciudad" value="<?=$datosUltimoPedido->Ciudad; ?>">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <input type="text" name="province" class="form-control" placeholder="Provincia" value="<?=$datosUltimoPedido->Provincia; ?>">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <input type="text" name="postal-code" class="form-control" placeholder="Código postal" value="<?=$datosUltimoPedido->Pais; ?>">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <input type="text" name="country" class="form-control" placeholder="País" value="<?=$datosUltimoPedido->CodigoPostal; ?>">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <input type="checkbox" name="terminos" checked="true" id="terms-conditions">
+                                        <label for="terms-conditions">Acepto los <a href="/terminos-condiciones/entidad/<?=$empresa; ?>" target="_blank">términos y condiciones</a></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h4><strong>Datos de envío</strong></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <input type="radio" checked="true" id="same-direction" name="envio">
+                                        <label for="same-direction">Enviar a la misma dirección de facturación</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h4><strong>Información de pago</strong></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <input type="text" name="card-number" class="form-control" placeholder="Número de tarjeta">
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <select name="month" class="form-control">
+                                            <option disabled="true" selected="true" value="">MM</option>
+
+                                            <option value="1">01</option>
+                                            <option value="2">02</option>
+                                            <option value="3">03</option>
+                                            <option value="4">04</option>
+                                            <option value="5">05</option>
+                                            <option value="6">06</option>
+                                            <option value="7">07</option>
+                                            <option value="8">08</option>
+                                            <option value="9">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <select name="year" class="form-control">
+                                            <option disabled="true" selected="true" value="">AA</option>
+
+
+                                            <option value="2017">2017</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2019">2019</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
+                                            <option value="2027">2027</option>
+
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <input type="text" name="cvv" class="form-control" placeholder="CVV">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <input type="text" name="owner-name-card" class="form-control" placeholder="Nombre como aparece en la tarjeta">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 text-right">
+                                    <br>
+                                    <div class="form-group">
+										<?php
+										    // var_dump($detallePedido);
+										    $totPedido = 0;
+										    $totCantidad = 0;
+											foreach ($detallePedido as $key => $reg) {
+												$totPedido += $reg->Precio;
+												$totCantidad += $reg->Cantidad;
+												$CodigoPedido = $reg->CodigoPedido;
+					                            if($reg->Moneda == "Soles"){ $simboloMoneda = "S/. "; }else{ $simboloMoneda= "$ "; }
+											}
+										?>										
+									
+									
+                                        <button type="submit" class="btn btn-sell"  id="botonConfirmarB">
+                                            <strong>PAGAR <?=$simboloMoneda ."  ".$totPedido; ?> EN <?=$totCantidad; ?>  ARTÍCULOS</strong>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+        </div>
+    </div>
+</div>
+
+<script>	
+$('#botonConfirmarB').on('click', '', function (e) {
+	confirmarPago();
+});				
+function confirmarPago(codigoItem) {
+        ///lanzamiento del API de culqui
+		 alertify.success("Procesando Datos");
+		///Si el retorno del proceso de pago mediante culqui es TRUE, cierra la proforma 
+	    var ruta = '/system/_vistas/se_pedidos.php?Main=CerrarPedido&entidad=<?php echo $empresa; ?>&pedido=<?php echo $pedido; ?>';
+
+		$.ajax({                        
+           type: "POST",                 
+           url: ruta,                     
+           data: $("#formularioDatosFacturacion").serialize(), 
+           success: function(data)             
+           {
+			
+			 
+			 // $('#MensajeId').html(data);
+			 location.href="/pago-finalizado/entidad/<?php echo $empresa; ?>/pedido/<?php echo $pedido; ?>";
+           }
+        });
+		///Si el retorno del proceso de pago mediante culqui es FALSE, deja a la proforma en un estado de intento fallido 		
+}	
+</script>

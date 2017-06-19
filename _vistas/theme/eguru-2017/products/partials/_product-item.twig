@@ -1,0 +1,90 @@
+{###############################################}
+{# Información de demostración sobre productos #}
+{# (Debe ser modificado o eliminado obligatoriamente) #}
+{% set randomProperties = [{
+        link    : '/product/curso-virtual-de-especializacion-en-gestion-de-procesos',
+        imageUrl: 'product-image-sample-1.jpg',
+        name    : 'Curso Especialización en Gestión de Procesos'
+    },{
+        link    : '/product/curso-presencial-de-especializacion-en-recursos-humanos',
+        imageUrl: 'product-image-sample-4.jpg',
+        name    : 'Curso de Especialización en Recursos Humanos'
+    },{
+        link    : '/product/laptop-hp-fg382-92',
+        imageUrl: 'product-image-sample-5.jpg',
+        name    : 'Laptop HP FG382-92 4ta generación'
+    },{
+        link    : '/product/ingresos-del-gobierno-central',
+        imageUrl: 'product-image-sample.png',
+        name    : 'Libro Finanzas de Ingresos del Gobierno Central'
+    }
+] %}
+
+{% set randProps = random(randomProperties) %}
+
+{% set product = product|merge(randProps) %}
+
+{###############################################}
+
+{# Producto #}
+<div class="row card-product">
+    <div class="col-xs-12">
+        <div class="row card-body">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <img class="img-responsive" src="/_vistas/theme/eguru-2017/images/{{ product.imageUrl }}" alt="Product image">
+
+                        {% if product.type == 'to-sell-in-promotion' %}
+                            <i class="icon-burst-sale"></i>
+                        {% endif %}
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <a href="{{ product.link ? product.link : "javascript:null" }}">
+                            <h4><strong>{{ product.name }}</strong></h4>
+                        </a>
+                        <p>
+                            Libro | Finanzas
+                        </p>
+                        <p>
+                            Phasellus varius bibendum ligula nec
+                            mollis. Aliquam tristique.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row card-footer">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <a href="/" class="btn btn-wish"><i class="icon-heart"></i></a>
+                        <a href="/" class="btn btn-share"><i class="icon-share-square"></i></a>
+
+                        {% if product.type == 'free' %}
+                            <a href="/" class="btn btn-sell"><i class="glyphicon glyphicon-shopping-cart"></i> <strong>GRATIS</strong></a>
+                        {% elseif product.type == 'to-sell' %}
+                            <a href="/" class="btn btn-sell"><i class="glyphicon glyphicon-shopping-cart"></i> <strong>$30.00</strong></a>
+                        {% elseif product.type == 'to-sell-now' %}
+                            <a href="/shopping-cart/checkout" class="btn btn-sell-now"><strong>IR A PAGAR</strong></a>
+                        {% elseif product.type == 'to-sell-in-promotion' %}
+                            <a href="/" class="btn btn-sell"><i class="glyphicon glyphicon-shopping-cart"></i> <strong>$30.00</strong></a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% if product.type == 'to-sell-in-promotion' %}
+                    <div class="row">
+                        <div class="col-xs-12 text-right">
+                            <span class="regular-price">Normal: $60.00</span>
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+{% extends 'layouts/_master.twig' %}
+
+{% block main %}
+
+    <!-- begin content -->
+    <div class="row">
+        <div class="col-xs-12">
+            
+            {{ a }}
+            
+            {# Información de demostración sobre slides #}
+            {% set slides = [] %}
+
+            {# Creando el banner #}
+            {% include 'home/_banner.twig' with { 'slides': slides } %}
+            
+        </div>
+    </div>
+    <div class="row app-container">
+        <div class="col-xs-12">
+            
+            {###############################################}
+            {# Información de demostración sobre productos #}
+            {% set products = [{
+                type: 'free'
+            },{
+                type: 'to-sell-now'
+            },{
+                type: 'to-sell'
+            },{
+                type: 'to-sell'
+            },{
+                type: 'to-sell'
+            },{
+                type: 'to-sell'
+            },{
+                type: 'to-sell-now'
+            },{
+                type: 'free'
+            }] %}
+            
+            {% set productsInPromotion = [{
+                type: 'to-sell-in-promotion'
+            },{
+                type: 'to-sell-in-promotion'
+            },{
+                type: 'to-sell-in-promotion'
+            },{
+                type: 'to-sell-in-promotion'
+            }] %}
+            {###############################################}
+
+            <br class="hidden-xs hidden-sm" />
+            <br class="hidden-xs hidden-sm" />
+
+            {# Lista de productos #}
+            <div class="center-block home-product-list-center-block">
+
+                {# Creando la lista de productos mejores productos #}
+                {% include 'products/_product-list.twig' with { 
+                    'title'     : 'Los mejores productos',
+                    'products'  : products 
+                } %}
+
+                {# Creando la lista de productos en promoción #}
+                {% include 'products/_product-list.twig' with { 
+                    'title'     : 'Promociones',
+                    'products'  : productsInPromotion 
+                } %}
+
+                <br />
+                <br />
+            </div>
+
+        </div>
+    </div>
+    <!-- end content -->
+
+{% endblock main %}

@@ -1,0 +1,99 @@
+
+<div class="row app-container">
+    <div class="col-xs-12">
+
+        <br>
+        <br>
+
+        <div class="center-block shopping-cart-center-block">
+            <div class="row shopping-cart-product-list">
+                <div class="col-xs-12">
+
+                    <h3 class="text-uppercase"><strong>Compras realizadas</strong></h3>
+					<div id="comment">
+					</div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <div class="panel">
+                                <div class="table-responsive">
+
+                                    <table class="table">
+                                        <tbody><tr>
+                                            <th>Artículo</th>
+                                            <th class="text-center">Cantidad</th>
+                                            <th class="text-center">Acción</th>
+                                        </tr>
+
+										<?php
+											foreach ($detallePedido as $key => $reg) {
+												// var_dump($reg);
+										?>	
+										
+                                        <tr>
+                                            <td>
+                                                <h4><strong><?=$reg->Nombre; ?></strong></h4>
+                                                <span><?=$reg->Categoria ." | ". $reg->SubCategoria ." | ". $reg->SubCategoria; ?> </span>
+                                            </td>
+                                            <td class="text-center">
+                                                <strong><span class="quantity"></span></strong>
+                                            </td>
+                                            <td class="text-center">
+													<?php 
+													    if($reg->CodTipoProducto == 4 ){ // Curso Virtual
+													    ?>
+														 <a href="#" id="btn_<?= $reg->CodigoPlataformaEducativa;?>" class="btn btn-preview"  onclick="conexionProeducative('<?= $empresa;?>','<?= $reg->CodigoPlataformaEducativa;?>','<?= $reg->CodTipoProducto;?>');" >
+															<i class="glyphicon glyphicon-eye-open"></i>
+															<strong>Ver </strong>
+														 </a>	                                                   														
+													<?php 														
+														}elseif($reg->CodTipoProducto ==  1 ){ //Ebook
+													?>
+														 <a href="#" id="btn_<?= $reg->CodigoPlataformaEducativa;?>" class="btn btn-preview"  onclick="conexionProeducative('<?= $empresa;?>','<?= $reg->CodigoPlataformaEducativa;?>','<?= $reg->CodTipoProducto;?>');" >
+															<i class="glyphicon glyphicon-eye-open"></i>
+															<strong>Leer</strong>
+														 </a>	                                                   														
+													<?php 														
+														}else{
+													?>
+														 <a href="#" id="btn_<?= $reg->CodigoPlataformaEducativa;?>" class="btn btn-preview"   >
+															<i class="glyphicon glyphicon-eye-open"></i>
+															<strong>Detalles</strong>
+														 </a>	                                                   														
+																					
+													<?php 														
+														}
+													?>
+                                               
+
+
+                                            </td>
+                                        </tr>
+                                        <?php 
+										    }
+										?>
+
+
+
+                                        </tbody></table>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+        </div>
+    </div>
+</div>
+

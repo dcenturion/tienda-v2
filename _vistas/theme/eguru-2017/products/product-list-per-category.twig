@@ -1,0 +1,76 @@
+{% extends 'layouts/_master.twig' %}
+
+{% block main %}
+
+    <!-- begin content -->
+    <div class="row app-container">
+        <div class="col-xs-12">
+
+            {# Para pantallas de escritorio a más #}
+            <br class="hidden-xs hidden-sm" />
+            <br class="hidden-xs hidden-sm" />
+            
+            <div class="center-block home-product-list-center-block">
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <ul class="nav nav-pills nav-stacked nav-stacked-subcategory">
+                            <li class="active">
+                                <a href="/"><input type="checkbox" checked="true"> Finanzas</a>
+                            </li>
+                            <li>
+                                <a href="/"><input type="checkbox"> Recursos Humanos</a>
+                            </li>
+                            <li>
+                                <a href="/"><input type="checkbox" checked="true"> Humanidades</a>
+                            </li>
+                            <li>
+                                <a href="/"><input type="checkbox"> Tecnología</a>
+                            </li>
+                            <li>
+                                <a href="/"><input type="checkbox"> Economía</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-md-9">
+                        
+                        {# Para pantallas de móvil y tablet #}
+                        <br class="hidden-md hidden-lg" />
+                        
+                        {###############################################}
+                        {# Información de demostración sobre productos #}
+                        {% set products = [{
+                            type: 'to-sell-now'
+                        },{
+                            type: 'to-sell'
+                        },{
+                            type: 'to-sell'
+                        },{
+                            type: 'to-sell'
+                        },{
+                            type: 'to-sell-now'
+                        },{
+                            type: 'free'
+                        }] %}
+
+                        {###############################################}
+                        
+                        {# Creando la lista de productos de la categoría #}
+                        {% include 'products/_product-list.twig' with { 
+                            'title'             : categoryName,
+                            'products'          : products,
+                            'productsPerRow'    : 3
+                        } %}
+
+                        <br />
+                        <br />
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end content -->
+
+{% endblock main %}

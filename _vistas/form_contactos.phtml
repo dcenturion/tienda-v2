@@ -1,0 +1,64 @@
+	<!-- START CONTACT FORM-->
+		<section id="contact" class="contact_area" style="padding:0px 0px 0px 0px">
+			<div class="contact_overlay">
+				<div class="container">
+					<div class="row">	
+						<div class="section-title text-center">
+						<br>
+						<br>
+							<h2 class="section-title-white" style="text-shadow:0px 2px 1px #333333">
+							Contáctate con <span>EPISODIOS</span></h2>
+							<div></div>
+						</div>	
+						<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight">
+							<div class="contact">
+								<form id="form_contactos" method="post" enctype="multipart/form-data">
+									<div id="msj_form">
+									</div>
+									<div class="row">
+										<div class="form-group col-md-12">
+											<input type="text" name="name" class="form-control" id="name" placeholder="Nombre" required="required">
+										</div>
+										<div class="form-group col-md-12">
+											<input type="email" name="email" class="form-control" id="email" placeholder="Email" required="required">
+										</div>
+										<div class="form-group col-md-12">
+											<input type="phone" name="phone" class="form-control" id="phone" placeholder="Teléfono" required="required">
+										</div>
+																				
+										<div class="form-group col-md-12">
+											<textarea rows="6" name="message" class="form-control" id="message" placeholder="Mensaje" required="required"></textarea>
+										</div>
+										<div class="col-md-12">
+											<div class="actions">
+												<input type="button" value="Enviar mensaje" name="submit" id="btn_enviar" 
+												class="btn btn-lg btn-contact-bg" title="Submit Your Message!" />
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div><!-- END COL -->
+						<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight">
+							<div class="contact_address">
+								
+								<div class="single_address">
+									<div class="address_icon" ><i class="fa fa-whatsapp" style="font-size: 35px;"></i></div>
+									<h4>Llámanos o escríbenos</h4>
+									<p><?=$numeros; ?></p>
+									<p><?=$numerosB; ?></p>
+								</div>
+								<div class="single_address">
+									<div class="address_icon"><i class="fa fa-envelope"></i></div>
+									<h4>Envíanos un mensaje</h4>
+									<p><?=$email; ?></p>
+								</div>
+							</div>
+						</div><!-- END COL -->
+					</div><!--- END ROW -->				
+				</div><!--- END CONTAINER -->	
+			</div><!--- END CONTACT OVERLAY -->	
+		</section>
+		<!-- END CONTACT FORM -->	
+					
+					

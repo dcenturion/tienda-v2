@@ -1,0 +1,71 @@
+{% extends 'layouts/_master.twig' %}
+
+{% block main %}
+
+    <!-- begin content -->
+    <div class="row app-container">
+        <div class="col-xs-12">
+
+            {# Vista del producto #}
+            <div class="center-block product-view-center-block">
+                
+                {# Creando vista del producto por el tipo correspondiente #}
+                {% if product.type == 'virtual-course' %}
+
+                    {# Creando vista del producto de tipo curso virtual #}
+                    {% include 'products/_product-view-type-virtual-course.twig' with { 'product': product } %}
+
+                {% elseif product.type == 'face-to-face-course' %}
+                    
+                    {# Creando vista del producto de tipo curso presencial #}
+                    {% include 'products/_product-view-type-face-to-face-course.twig' with { 'product': product } %}
+                    
+                {% elseif product.type == 'physical' %}
+                    
+                    {# Creando vista del producto físico #}
+                    {% include 'products/_product-view-type-physical.twig' with { 'product': product } %}
+                    
+                {% elseif product.type == 'virtual' %}
+                    
+                    {# Creando vista del producto virtual #}
+                    {% include 'products/_product-view-type-virtual.twig' with { 'product': product } %}
+                    
+                {% endif %}
+                
+            </div>
+
+            {###############################################}
+            {# Información de demostración sobre productos #}
+
+            {% set relatedProducts = [{
+                type: 'free'
+            },{
+                type: 'to-sell-now'
+            },{
+                type: 'free'
+            },{
+                type: 'to-sell'
+            }] %}
+            {###############################################}
+
+            <br />
+            <br />
+
+            {# Lista de productos #}
+            <div class="center-block home-product-list-center-block">
+
+                {# Creando la lista de productos relacionados #}
+                {% include 'products/_product-list.twig' with { 
+                    'title'     : 'Productos relacionados',
+                    'products'  : relatedProducts 
+                } %}
+
+                <br />
+                <br />
+            </div>
+
+        </div>
+    </div>
+    <!-- end content -->
+
+{% endblock main %}

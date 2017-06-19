@@ -1,0 +1,371 @@
+
+<div class="container">
+    <div class="row app-header">
+        <div class="col-xs-12">
+		
+            <div class="row app-header-desktop">
+                <div class="col-xs-12">
+
+                    <div class="row presentation-bar" >
+                        <div class="col-xs-6">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6 text-center" >
+                                    <a href="/<?=$viewDataArray["principal"]->SubDominio; ?>">
+                                        <img class="img-responsive" src="/_imagenes/usuarios/<?=$viewDataArray["principal"]->ImagenLogo;?>" alt="Logo image">
+                                    </a>
+                                </div>
+                                <div class="col-xs-12 col-md-6 text-center">
+                                    <br class="hidden-xs hidden-sm">
+                                    <div class="btn-group btn-group-social-media">
+                                        <a href="/" target="_blank" class="btn btn-default" s><i class="icon-facebook"></i></a>
+                                        <a href="/" target="_blank" class="btn btn-default" ><i class="icon-instagram"></i></a>
+                                        <a href="/" target="_blank" class="btn btn-default" ><i class="icon-google-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <br class="hidden-xs hidden-sm">
+                            <div class="dropdown dropdown-shopping-cart"> 
+                                <a href="javascript:null" style="color:<?=$viewDataArray["principal"]->ColorMenuHorizontal; ?>" class="btn btn-default dropdown-toggle text-uppercase" id="dd-shopping-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                    <strong style="color:<?=$viewDataArray["principal"]->ColorMenuHorizontal; ?>">
+                                        <span id="indicador-pedido">(<?=$viewDataArray["totalItem"]; ?>)</span> Artículos
+                                    </strong>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-shopping-cart" id="detallePedido">
+                               
+                                </ul>
+                            </div>
+
+                            <br class="hidden-xs hidden-md hidden-lg">
+
+                            <a href="/" class="btn btn-menu hidden"><i class="glyphicon glyphicon-th"></i></a>
+
+                            <br class="hidden-md hidden-lg">
+
+							<?php
+							    if($viewDataArray["datosUser"]->Codigo){
+							?>		
+								
+                                <div class="dropdown">
+									<a href="javascript:null"  class="btn btn-presentation dropdown-toggle text-uppercase" id="dd-form-login" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="glyphicon glyphicon-user"></i> <strong><?= $viewDataArray["datosUser"]->Nombre; ?> </strong> <i class="glyphicon glyphicon-triangle-bottom"></i>
+									</a>
+									<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-form-login">
+									
+											<li><a href="javascript:null"><span>OPCIONES DEL PERFIL</span></a></li>
+											<li role="separator" class="divider"></li>
+											<li><a href="/compras-realizadas/entidad/<?= $viewDataArray["empresa"]; ?>" ><i class="glyphicon glyphicon-shopping-cart"></i>  <strong style="padding-left:10px;">Mis Compras </strong></a></li>
+											<li role="separator" class="divider"></li>
+											<li><a href="/favoritos/entidad/<?= $viewDataArray["empresa"]; ?>"><i class="glyphicon glyphicon-heart-empty"></i>  <strong style="padding-left:10px;">Favoritos </strong></a></li>
+											<li role="separator" class="divider"></li>											
+											<li><a href="/editar-perfil/entidad/<?= $viewDataArray["empresa"]; ?>"><i class="glyphicon glyphicon-user"></i> <strong style="padding-left:10px;"> Editar Perfil </strong></a></li>
+											<li role="separator" class="divider"></li>	
+											<li><a href="/<?= $viewDataArray["empresa"]; ?>?cierrasesion=si">
+											<i class="glyphicon glyphicon-off"></i> <strong style="padding-left:10px;"> Cerrar Sesión </strong>
+											</a></li>
+											<li role="separator" class="divider"></li>												
+									</ul>
+								</div>								
+							<?php		
+								}else{
+							?>
+						
+								<div class="dropdown">
+									<a href="javascript:null" style="background-color:<?=$viewDataArray["principal"]->ColorMenuHorizontal; ?>" class="btn btn-presentation dropdown-toggle text-uppercase" id="dd-form-login" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="glyphicon glyphicon-user"></i> <strong>Mi cuenta</strong>
+									</a>
+									<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-form-login">
+										<li>
+
+											<form class="row form-login" action='javascript:void(null);'  enctype='multipart/form-data' id="formularioDatosLogin"  >
+												<div class="col-xs-12">
+													<div class="row">
+														<div class="col-xs-6 no-padding-right">
+															<button type="button" class="btn btn-block btn-facebook">
+																<i class="icon-facebook"></i>
+															</button>
+														</div>
+														<div class="col-xs-6 no-padding-left">
+															<button type="button" class="btn btn-block btn-google">
+																<i class="icon-google-plus"></i>
+															</button>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-12">
+															<br>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-xs-12">
+
+															<div class="row">
+																<div class="col-xs-12">
+																	<h4 class="text-uppercase"><strong>Entra a Egurú</strong></h4>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-xs-12">
+																	<div class="form-group">
+																		<input type="text" name="Usuario" class="form-control" placeholder="Correo electrónico">
+																	</div>
+																</div>
+																<div class="col-xs-12">
+																	<div class="form-group">
+																		<input type="password" name="Contrasena" class="form-control" placeholder="Contraseña">
+																	</div>
+																</div>
+																<div class="col-xs-12 text-right">
+																	<div class="form-group">
+																		<button type="submit" class="btn btn-presentation text-uppercase" id="botonInicioSesion">
+																			<strong>Ingresar</strong>
+																		</button>
+																	</div>
+																</div>
+																<div class="col-xs-12 text-center">
+																	<div class="form-group">
+																		<p>
+																			<a href="javascript:null" data-toggle="modal" data-target="#modal-recover-account" id="btn_recuperar_contrasena_modal">¿Olvidaste tu contraseña?</a>
+																		</p>
+																		<p class="hidden-sm hidden-md hidden-lg">
+																			<a href="/user/register">Regístrate en eGurú</a>
+																		</p>
+																	</div>
+																</div>
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</form>
+
+										</li>
+									</ul>
+								</div>
+								<a href="/registrate/entidad/<?php echo $viewDataArray["principal"]->SubDominio; ?>" class="btn btn-presentation text-uppercase hidden-xs">
+									<i class="glyphicon glyphicon-plus-sign"></i> <strong>Regístrate</strong>
+								</a>
+
+							<?php
+							    }
+							?>
+                        </div>
+                    </div>
+
+                    <div class="row navigation-bar" >
+                        <div class="col-xs-12">
+                            <nav class="navbar navbar-default" style="background-color:<?=$viewDataArray["principal"]->ColorMenuHorizontal; ?>">
+                                <div class="container-fluid">
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nv-main" aria-expanded="false">
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                    </div>
+
+                                    <div class="collapse navbar-collapse" id="nv-main">
+                                        <ul class="nav navbar-nav navbar-left text-uppercase">
+										<?php
+										        $categoria = "";
+											    foreach ($viewDataArray["categorias"] as $key => $reg) {
+													if($reg->Categoria == $categoria ){
+
+													}else{
+														$categoria = $reg->Categoria;
+														
+														if($categoria_get == $categoria){
+														 ?>	
+														 <li class="active" ><a href="/catalogo-productos/entidad/<?=$empresa; ?>/categoria/<?=$categoria = $reg->Categoria; ?>"><strong><?=$categoria = $reg->Categoria; ?></strong></a></li>										
+										
+														<?php	
+														}else{
+														?>
+														 <li><a href="/catalogo-productos/entidad/<?=$empresa; ?>/categoria/<?=$categoria = $reg->Categoria; ?>"><strong><?=$categoria = $reg->Categoria; ?></strong></a></li>										
+																								
+														<?php														
+														}
+														
+													}
+												}
+										?>											
+                                        </ul>
+                                        <form method="get" action="/<?=$empresa; ?>" class="navbar-form navbar-right">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="busqueda" placeholder="Escribe aquí para buscar">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+	
+	
+	<!-- MODAL - CAMBIO DE CONTRASEÑA  -->
+	<div class="modal fade" id="modal-recover-account" tabindex="-1" role="dialog" aria-labelledby="modal-recover-account-title">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+				</div>
+				<div class="modal-body">
+
+					<div class="row">
+						<div class="col-xs-10 col-sm-8 col-xs-offset-1 col-sm-offset-2"  id="modal-recover-account-title">
+
+							<div class="row">
+								<div class="col-xs-12 text-center" id="text-moadal">
+									<h3 class="text-uppercase" >
+										<strong>Recuperar contraseña</strong>
+									</h3>
+									<p>
+										Para restaurar tu contraseña, ingresa tu dirección
+										de correo electrónico. Es posible que tengas que
+										consultar tu bandeja de spam 
+									</p>
+									<br />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+
+									<form class="row" method="post" action='javascript:void(null);'  enctype='multipart/form-data' id="formularioRecuperaContrasena">
+										<div class="col-xs-12">
+
+											<div class="row">
+												<div class="col-xs-12">
+													<div class="form-group">
+														<input type="text" name="email_user" id="email" class="form-control" placeholder="Correo electrónico">
+													</div>
+												</div>
+												<div class="col-xs-12 text-right">
+													<div class="form-group">
+														<button type="button" id="btn_recuperar_contrasena"  class="btn btn-confirm text-uppercase" data-toggle="modal" >
+															<strong>Recuperar</strong>
+														</button>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</form>
+
+									<br />
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	
+<script>
+	
+$('#dd-shopping-cart').on('click', '', function (e) {
+				cargaDetallePedido();
+});						
+function cargaDetallePedido() {
+
+	    var ruta = '/system/_vistas/se_pedidos.php?Main=DetallePedido';
+	    var parametros = {
+			'entidad':"<?php echo $viewDataArray["principal"]->SubDominio; ?>",'Codigo_Cliente':"<?=$cod_cliente; ?>"
+		};
+		
+		$.ajax({
+			data: parametros,
+			url: ruta,
+			type: 'get',
+			async: true,
+			success: function(response) {
+				
+				// var l_a_json = eval('(' + response + ')');
+				// var mensaje = l_a_json["msj"];
+				// var nroItem = l_a_json["nro_articulos"];
+				
+				// alertify.success(mensaje);
+				$('#detallePedido').html(response);
+				$('#detallePedido').fadeIn(1500);
+			}
+		});
+}	
+
+
+
+$('#botonInicioSesion').on('click', '', function (e) {
+	iniciaSesion();
+});				
+function iniciaSesion() {
+        ///lanzamiento del API de culqui
+		
+		///Si el retorno del proceso de pago mediante culqui es TRUE, cierra la proforma 
+	    var ruta = '/system/_vistas/se_usuario_tienda.php?Main=IniciarSesion&entidad=<?php echo $empresa; ?>';
+
+		$.ajax({                        
+           type: "POST",                 
+           url: ruta,                     
+           data: $("#formularioDatosLogin").serialize(), 
+           success: function(data)             
+           {
+			    if(data=="true"){
+			        location.href="/<?php echo $empresa; ?>";					
+				}else{
+			        alertify.success("Datos inválidos");					
+				}
+
+
+           }
+        });
+		///Si el retorno del proceso de pago mediante culqui es FALSE, deja a la proforma en un estado de intento fallido 		
+}
+
+
+
+$('#btn_recuperar_contrasena').on('click', '', function (e) {
+	recuperaContrasena("<?php echo $empresa; ?>");
+});	
+
+function recuperaContrasena(empresa) {
+	
+	    var ruta = '/system/_vistas/se_usuario_tienda.php?Main=RecuperarContrasena&entidad='+empresa+'';
+       	// $('#modal-recover-account-title').html("Cargando....");
+		$.ajax({                        
+           type: "POST",                 
+           url: ruta,                     
+           data: $("#formularioRecuperaContrasena").serialize(), 
+           success: function(data)             
+           {
+			    console.log(data);
+			   	$('#modal-recover-account-title').html(data);
+
+				var explode = function(){
+				    location.href="/"+empresa+"";
+				};
+				setTimeout(explode, 3000);			
+	
+           }
+        });	
+}
+	
+
+</script>	

@@ -1,0 +1,132 @@
+	<!-- Compose Email Structure -->
+
+		
+			<div class="modal-content">
+				<nav class="cyan">
+				  <div class="nav-wrapper">
+					<div class="left col s12 m5 l5">
+					  <ul>
+						<li><a href="#!"  onclick="cierraPanel('modal1');" class="email-menu"><i class="modal-action modal-close  mdi-hardware-keyboard-backspace"></i></a>
+						</li>
+						<li><a href="#!" class="email-type"><?= $this->tituloPopup; ?></a>
+						</li>
+					  </ul>
+					</div>
+					<div class="col s12 m7 l7 hide-on-med-and-down">
+					  <ul class="right">
+						<li>
+						     <a  id="btn_guardar" onclick="enviarForm('adminserviceform','/adminservice/form/accion');">Guardar</a>
+						</li>
+					  </ul>
+					</div>
+				  </div>
+				</nav>
+			</div>
+		  
+			<div class="model-email-content">
+				
+				<div id="card-alert" class="card green lighten-5" style="display:none">
+				  <div id="msj_form" class="card-content green-text">
+					<p>DANGER : The daily report has failed</p>
+				  </div>
+				  <button type="button" class="close red-text" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				  </button>
+				</div>
+				<div class="row">
+					<form class="col s12" id="adminserviceform" method="post">
+					  <div class="row">
+						<div class="input-field col s12">
+						
+						  <input id="Nombre" name="Nombre"  type="text" class="validate" value="<?= $this->articulos_reg["Nombre"]; ?>">
+						  
+						  <label for="first_name" class="active">Nombre</label>
+						</div>
+						<div class="input-field col s12">
+						  <textarea id="Descripcion" name="Descripcion" class="materialize-textarea" length="120"><?= $this->articulos_reg["Descripcion"]; ?></textarea>
+						  <label for="textarea1" class="active">Descripcion</label>
+						</div>
+					  </div>
+					  <div class="row">
+						<div class="input-field col s6">
+						
+							<label>Tipo de servicio </label><br><br>
+							<select name="Tipoarticulos" class="browser-default">
+							
+								<?php 
+							     foreach ( $this->tipo_articulos as $result ) {
+								// foreach ( $this->tipo_articulos as $resultA ) {
+								?>
+								<option value="<?= $result["Codigo"]; ?>"><?= $result["Descripcion"]; ?></option>
+							
+								<?php 	
+								}
+								?>
+							  
+							</select>
+							
+						</div>
+						<div class="input-field col s6">
+						    <label>Sector </label><br><br>
+							<select name="Sectorarticulos" class="browser-default">
+						
+								<?php 
+							     foreach ( $this->sectorarticulos as $resultB ) {
+									 
+								?>
+								<option value="<?= $resultB["Codigo"]; ?>"><?= $resultB["Descripcion"]; ?></option>
+							
+								<?php 	
+
+								}
+								?>							  
+							</select>
+						</div>
+					  </div>
+					  <div class="row">
+						<div class="input-field col s12">
+							 <div class="switch">
+								 <label>
+								  Estado:  Desactivo
+								  <input type="checkbox" name="Estado">
+								  <span class="lever"></span> Activo
+								 </label>
+							  </div>
+						</div>
+					  </div><br><br>
+				
+					</form>
+				</div>
+			</div>
+			<div class="modal-content">
+				<nav class="cyan">
+				  <div class="nav-wrapper">
+					<div class="left col s12 m5 l5">
+					  <ul>
+						<li><a href="#!" class="email-menu" onclick="cierraPanel('modal1');" ><i class="modal-action modal-close  mdi-hardware-keyboard-backspace"></i></a>
+						</li>
+						<li><a href="#!" class="email-type"><?= $this->tituloPopup; ?></a>
+						</li>
+					  </ul>
+					</div>
+					<div class="col s12 m7 l7 hide-on-med-and-down">
+					  <ul class="right">
+						<li>
+						<a  id="btn_guardarB" onclick="enviarForm('adminserviceform','/adminservice/form/accion');">Guardar</a>
+						</li>
+					  </ul>
+					</div>
+				  </div>
+				</nav>
+			</div>
+	
+
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="/js/plugins/jquery-1.11.2.min.js"></script>    
+    <!--materialize js-->
+    <script type="text/javascript" src="/js/materialize.js"></script>
+	
+    <script type="text/javascript" src="js/plugins/prism/prism.js"></script>
+   
+    
+	

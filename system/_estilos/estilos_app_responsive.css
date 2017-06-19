@@ -1,0 +1,181 @@
+@media screen and (max-width: 2050px) {
+    .menuHorz002 ul .busquedaGeneral .icon-search{
+	
+	}
+	.menuHorz002 ul .busquedaGeneral {
+		padding: 8px 20px 0px 80px;
+	}	
+	.menuHorz002 ul .busquedaGeneral input {
+		width: 94%;
+	}	
+}
+
+
+@media screen and (max-width: 2050px) {
+    .menuHorz002 ul .busquedaGeneral .icon-search{
+
+	}
+	.menuHorz002 ul .busquedaGeneral {
+		padding: 8px 20px 0px 80px;
+	}	
+	.menuHorz002 ul .busquedaGeneral input {
+		width: 94%;
+	}	
+}
+
+@media screen and (max-width: 1822px) {
+    .menuHorz002 ul .busquedaGeneral .icon-search{
+	}
+	.menuHorz002 ul .busquedaGeneral {
+		padding: 8px 20px 0px 50px;
+	}	
+	.menuHorz002 ul .busquedaGeneral input {
+		width: 92.5%;
+	}	
+    .PanelUser{
+        width: 27%;			
+	}	
+	.menuHorz002 ul .busquedaGeneral .icon-search{
+
+		top: 8px;
+		padding: 0.4em 12px 0.3em 11px;	
+	}	
+}
+
+@media screen and (max-width: 1709px) {
+    .menuHorz002 ul .busquedaGeneral .icon-search{
+	}
+	.menuHorz002 ul .busquedaGeneral {
+		padding: 8px 20px 0px 40px;
+	}	
+	.menuHorz002 ul .busquedaGeneral input {
+		width: 92.5%;
+	}	
+    .PanelUser{
+        width: 26%;			
+	}	
+	.menuHorz002 ul .busquedaGeneral .icon-search{
+		top: 8px;
+		padding: 0.3em 12px 0.3em 11px;		
+	}	
+}
+
+
+@media screen and (max-width: 1519px) {
+	
+	.menuHorz002 ul .busquedaGeneral {
+		padding: 8px 20px 0px 15px;
+	}		
+	.menuHorz002 ul .busquedaGeneral .icon-search{
+	}
+    .PanelUser{
+        width: 24.5%;			
+	}
+}
+
+@media screen and (max-width: 1390px) {
+	.menuHorz002 ul .busquedaGeneral .icon-search{
+	}	
+    .PanelUser{
+        width: 22%;	
+	}
+	.CuadroA .inputs{
+		max-height:300px;
+	}
+	.menu4 li a{
+		padding: 2% 8%;
+	}
+	.menuHorz002 ul .busquedaGeneral {
+		padding: 8px 20px 0px 0px;
+	}
+}
+
+@media screen and (max-width: 1250px) {
+    .PanelUser{
+        width: 19%;		
+	}
+	.menuHorz002 ul .busquedaGeneral .icon-search {
+        padding:0.3em 12px 0.34em 11px;	
+	}
+	.CuadroA .inputs{
+		max-height:300px;
+	}
+	.menu4 li a{
+		padding: 2% 8%;
+	}
+}
+
+@media screen and (max-width: 1170px) {
+    .PanelUser{
+        width:15%;		
+	}
+	.menu4 li a{	
+	    width: 55%;
+	}
+    .menu4 li a .icon {	
+	    padding: 5px 20px 2px 30px;
+    }
+	.menu4 li {
+		text-align:center;
+	}	
+	.CuadroA .inputs{
+		max-height:290px;
+	}
+	.menu4 li a {
+		padding: 2% 11%;
+		width: 62%;
+
+	}	
+	.CuadroA .inputs{
+		max-height: 190px;
+	}
+	.panelContenedorF1{
+		height:360px;
+	}		
+}
+
+@media screen and (max-width: 1090px) {
+    .PanelUser{
+        width:18%;		
+	}
+    .menuHorz002 ul .busquedaGeneral	{
+	    width: 35%;
+	}
+    .menuHorz002 ul .busquedaGeneral input	{
+	    width: 87%;		
+	}
+	.menuHorz002 ul .busquedaGeneral .icon-search {
+        padding: 0.3em 12px 0.3em 11px;		
+	}	
+	.menu4 li a {
+		padding: 2% 4%;
+		width: 77%;
+	}	
+	.CuadroA .inputs{
+		max-height: 150px;
+	}
+	.panelContenedorF1{
+		height:320px;
+	}	
+}
+
+@media screen and (max-width: 900px) {
+    .PanelUser{
+        width: 26%;		
+	}
+    .menuHorz002 ul .busquedaGeneral	{
+	    width: 20%;
+	}
+    .menuHorz002 ul .busquedaGeneral input	{
+	    width: 80%;		
+	}
+	.menuHorz002 ul .busquedaGeneral .icon-search {
+        padding: 0.3em 12px 0.3em 11px;		
+	}	
+	.CuadroA .inputs{
+		max-height: 140px;
+	}	
+	.panelContenedorF1{
+		height:300px;
+	}
+}

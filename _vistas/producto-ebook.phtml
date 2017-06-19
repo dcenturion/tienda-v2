@@ -1,0 +1,312 @@
+<?php  
+// var_dump($productosCatalogo);
+// $productoCat=$productosCatalogo[0];
+if($productosCatalogo->Moneda=="Soles"){
+    $moneda="S/.";
+}elseif($productosCatalogo->Moneda=="Dolares"){
+    $moneda="$/.";
+}
+?>
+
+<div class="row app-container">
+    <div class="col-xs-12">
+
+        <div class="center-block product-view-center-block">
+            <div class="row product-view">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 hidden-xs text-center">
+                            <ul class="list-group list-group-course" style="background-color:#fff;">
+							    <img class="img-responsive" src="/system/_articulos/<?=$productosCatalogo->ImagenPresentacionA;?>" width="80%" alt="Product image">
+							</ul>
+							
+							<div class="col-xs-12 text-center" id="panel_btn_compra_<?=$idProducto;?>">
+								<a href="#"  id="visualizarPdf"  class="btn btn-sell" style="background-color:#eab517;"  ><i class="glyphicon glyphicon-search"></i> <strong> Vista Previa </strong></a>
+							</div>						
+                        </div>
+
+                        <div class="col-xs-12 col-sm-8">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="page-header">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-8">
+                                                <h1>
+                                                    <strong><small><?= $productosCatalogo->TipoArticulos ?></small></strong>
+                                                    <br>
+                                                    <strong><?= $productosCatalogo->Nombre ?></strong>
+                                                </h1>
+                                            </div>
+                                            <div class="col-xs-12 col-md-4 btn-group-action">
+                                                <a href="#" onclick="seleccionaProductoListaPreferencias('<?=$idProducto;?>','<?=$empresa;?>');" class="btn btn-wish"><i class="icon-heart"></i></a>
+                                                <a href="/" class="btn btn-share"><i class="icon-share-square"></i></a>
+                                            </div>
+                                            <div class="col-xs-12 hidden-md hidden-lg">
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <p>
+                                        <?= $productosCatalogo->Descripcion ?>
+                                    </p>
+                                </div>
+                            </div>                         
+						 						 
+                            <div class="row product-view-section property-section">
+                                <div class="col-xs-12">
+                                    <br>
+                                    <br>
+                                    <br>
+                                </div>						
+								
+                                <div class="col-xs-4 col-md-3 text-center">
+                                    <i class="icon-usd"></i>
+                                    <br class="hidden-lg">
+                                    <h4>
+                                        <small>Costo</small><br>
+                                        <strong><?= $moneda.$productosCatalogo->Precio ?></strong>
+                                    </h4>
+                                </div>
+                                <div class="col-xs-12 col-md-6 text-center" id="panel_btn_compra_<?=$idProducto;?>">
+                                    <a href="#panel_entidades"  id="btn_<?=$idProducto;?>"  class="btn btn-sell" onclick="seleccionaProducto('<?=$idProducto;?>','<?=$empresa;?>');" ><i class="glyphicon glyphicon-shopping-cart"></i> <strong> Comprar </strong></a>
+                                </div>
+                            </div>		
+						
+                            <div class="row product-view-section">
+                                <div class="col-xs-12">
+                                    <br>
+                                    <h3>
+                                        <strong>Autor(es)</strong>
+                                    </h3>
+								<?php
+									foreach ($autores as $key => $reg_autores) {
+								?>
+								    <h3 style="font-size: 1.3em;">
+									<?= $reg_autores->Nombre; ?>
+									</h3>
+									
+									<p>
+                                        <?= $reg_autores->Descripcion; ?>
+                                    </p>
+								<?php
+									}
+								?>									
+                                    
+									
+                                </div>
+                            </div>
+                            <div class="row product-view-section">
+                                <div class="col-xs-12">
+                                    <br>
+                                    <h3>
+                                        <strong>Capítulos</strong>
+                                    </h3>
+                                    <p>
+                                        <?= $productosCatalogo->Capitulos ?>
+                                    </p>
+                                </div>
+                            </div>
+							
+                            <div class="row product-view-section">
+                                <div class="col-xs-12">
+                                   
+								    <form class="row" method="post" action='javascript:void(null);'  enctype='multipart/form-data' id="formularioConsultas">
+                                        <div class="col-xs-12 col-md-8">
+
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <br>
+                                                    <h3>
+                                                        <strong>Consultas sobre este artículo</strong>
+                                                    </h3>
+                                                    <p>
+                                                        Si tienes alguna consulta sobre este
+                                                        producto por favor escríbenos mediante
+                                                        el siguiente formulario de contacto:
+                                                    </p>
+                                                </div>
+                                            </div>
+											
+											<div class="row">											
+												<div class="col-xs-12">
+													<div class="form-group">
+														<?php
+														if($datosUser->Email ==""){
+														    $readonly = "";
+														}else{
+														    $readonly = "readonly";												
+														}
+														?>
+														<input type="text" name="nombre" class="form-control" placeholder="Nombres y Apellidos" value="<?= $datosUser->Nombre?>" <?=$readonly; ?> >
+													</div>
+												</div>
+											</div>
+											
+											<div class="row">
+												<div class="col-xs-12">
+													<div class="form-group">
+														<?php
+														if($datosUser->Email ==""){
+														    $readonly = "";
+														}else{
+														    $readonly = "readonly";												
+														}
+														?>									
+														<input type="text" name="email" class="form-control" placeholder="Email" value="<?= $datosUser->Email; ?>" <?=$readonly; ?>>
+													</div>
+												</div>	   
+											</div>	   
+											
+                                            <div class="row">
+												<div class="col-xs-12">
+													<div class="form-group">
+																					
+														<input type="text" name="telefono" class="form-control" placeholder="Telefono" value="<?= $datosUser->Telefono; ?>">
+													</div>
+												</div>	   
+											</div>	   
+											
+																						
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <textarea name="comment" id="comment" class="form-control" placeholder="Escribe aquí tu consulta" rows="5"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 text-right">
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-confirm"  id="botonConsultas">
+                                                            <strong>ENVIAR</strong>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <br>
+        <br>
+
+        <div class="center-block home-product-list-center-block">
+
+            <div class="row product-list">
+                <div class="col-xs-12">
+                    <h3 class="text-uppercase"><strong>Productos relacionados</strong></h3>
+					<div id="msjAjax">
+					
+					</div>
+                    <div class="row">
+					<?php
+						foreach ($productosRelacionados as $key => $reg) {
+					?>	
+								
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="row card-product">
+                                <div class="col-xs-12">
+                                    <div class="row card-body">
+                                        <div class="col-xs-12">
+                                            <div class="row">
+                                                <div class="col-xs-12 text-center">
+                                                    <img class="img-responsive" src="/_vistas/theme/eguru-2017/images/product-image-sample-5.jpg" alt="Product image">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 text-center">
+                                                    <a href="/product/laptop-hp-fg382-92">
+                                                        <h4><strong><?= $reg->Nombre;  ?></strong></h4>
+                                                    </a>
+                                                    <p>
+                                                        <?=$reg->Categoria ." | ". $reg->SubCategoria; ?>
+                                                    </p>
+                                                    <p>
+                                                       <?=$reg->Descripcion; ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row card-footer">
+                                        <div class="col-xs-12">
+                                            <div class="row">
+                                                <div class="col-xs-12 text-center">
+                                                    <a href="/" class="btn btn-wish"><i class="icon-heart"></i></a>
+                                                    <a href="/" class="btn btn-share"><i class="icon-share-square"></i></a>
+		                                            <?php 
+														if($reg->Moneda == "Soles"){ $simboloMoneda= "S/. "; }else{ $simboloMoneda= "$ "; }
+														if($reg->Precio == 0){
+													?>		
+													
+															<a href="/producto-programa-educativo/id/<?=$idProducto;?>/entidad/<?=$empresa;?>" class="btn btn-sell"><strong>INSCRÍBETE</strong></a>								
+													<?php }else{ ?>
+															<a href="#<?=$idProducto;?>" class="btn btn-sell" id="Alias-<?=$idProducto;?>" onclick="seleccionaProducto('<?=$idProducto;?>','<?=$rempresa;?>');" ><i class="glyphicon glyphicon-shopping-cart"></i> <strong><?= $simboloMoneda . $reg->Precio; ?></strong></a>								
+													<?php }?>
+												</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                
+						</div>
+
+					<?php
+						}
+					?>	                       
+
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+$('#visualizarPdf').on('click', '', function (e) {
+	visualizarPdf();
+});				
+function visualizarPdf() {
+	    var msg = "<iframe src='/system/_articulos/<?=$productosCatalogo->DocumentoPresentacion;?>' width='730px' height='400px' ></iframe>";
+			  
+			reset();
+			alertify.alert(msg);
+}	
+
+function reset () {
+	$("#toggleCSS").attr("href", "../themes/alertify.default.css");
+	alertify.set({
+		labels : {
+			ok     : "Cancelar"
+		},
+		delay : 5000,
+		buttonReverse : false,
+		buttonFocus   : "ok"
+	});
+}
+
+
+$('#botonConsultas').on('click', '', function (e) {
+	consultas('<?=$empresa; ?>','<?=$codPedido; ?>','<?=$idProducto; ?>','<?=$cod_cliente; ?>');
+});	
+				
+</script>

@@ -1,0 +1,5 @@
+_librerias/composer.lock
+_librerias/composer.phar
+_librerias/vendor/
+nbproject/
+.idea/

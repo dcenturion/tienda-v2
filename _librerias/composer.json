@@ -1,0 +1,25 @@
+{
+    "name": "shullz/tienda-virtual",
+    "description": "Ecommerce",
+    "homepage": "https://eguruclub.com",
+    "keywords": [
+        "Ecommerce",
+        "PHP"
+    ],
+    "require": {
+        "twig/twig": "~1.33.2",
+        "klein/klein": "2.1.0"
+    },
+    "autoload": {
+        "files": [
+            "./php/conexiones.php",
+            "./php/funciones.php",
+            "./php/route.php",
+            "../_vistas/home.php",
+            "../_vistas/contactos.php",
+            "../_vistas/producto-programa-educativo.php",
+            "../_vistas/producto-ebook.php",
+            "../_vistas/producto-estandar.php"
+        ]
+    }
+}

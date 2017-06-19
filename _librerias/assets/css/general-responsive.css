@@ -1,0 +1,119 @@
+/* >= 400px */
+@media (min-width: 400px) {
+
+}
+
+/* >= 550px */
+@media (min-width: 550px) {
+
+}
+
+/* >= 768px */
+@media (min-width: 768px) {
+    .container {
+        width: 100%;
+        max-width: 1366px;
+    }
+    /* Header
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .app-header .app-header-desktop .navigation-bar .navbar-default .navbar-collapse {
+        padding: 0rem;
+    }
+    .app-header .app-header-desktop .navigation-bar .navbar-default .container-fluid {
+        padding: 0rem;
+    }
+    .app-container .product-view .page-header {
+        margin-top: 4rem;
+    }
+    /* Footer
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .app-footer .footer-top .footer-body {
+        padding: 4rem 4rem;
+    }
+    .app-footer .footer-top .footer-body ul li {
+        margin-top: 1.8rem;
+    }
+    /* Bxslider
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .bx-wrapper .bx-prev{
+        left: 4rem;
+    }
+    .bx-wrapper .bx-next {
+        right: 4rem;
+    }
+}
+
+/* >= 992px */
+@media (min-width: 992px) {
+    /* Header
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .app-header .app-header-desktop .presentation-bar .btn-group-social-media .btn{
+        font-size: 2.5rem;
+        padding: 0.8rem 1rem 0rem;
+    }
+    .app-header .app-header-desktop .navigation-bar .navbar-default{
+        padding: 0rem 11rem;
+    }
+    .app-header .app-header-desktop .navigation-bar .navbar-default .navbar-nav > li > a {
+        padding-left: 2.4rem;
+        padding-right: 2.4rem;
+    }
+    /* Container - Product - List
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .app-container .product-list .card-product{
+        margin: 0rem -5px 2.5rem;
+    }
+    .app-container .nav-stacked-subcategory{
+        margin-right: 2.5rem;
+    }
+    /* Container - Product - View
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .app-container .product-view .btn.btn-wish, 
+    .app-container .product-view .btn.btn-share {
+        margin-top: 4rem;
+    }
+    .app-container .product-view .btn-group-action {
+        text-align: right;
+    }
+    /* Bxslider
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .bx-wrapper .bx-prev{
+        left: 15rem;
+    }
+    .bx-wrapper .bx-next {
+        right: 15rem;
+    }
+    /* Footer
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .app-footer .footer-top .footer-body {
+        padding: 7rem 10rem;
+    }
+    .app-footer .footer-top .footer-body .footer-body-block {
+        border-right: solid 1px rgba(255, 255, 255, 0.3);
+        margin-right: 4rem;
+        padding-bottom: 4rem;
+    }
+    .app-footer .footer-bottom p {
+        margin: 0rem 10rem;
+    }
+}
+
+/* >= 1200px */
+@media (min-width: 1200px) {
+    /* Header
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .app-header .app-header-desktop .presentation-bar{
+        padding: 2.2rem 11rem 1.5rem 5.5rem;
+    }
+    /* Container - Product - View
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .app-container .product-view .product-view-section.property-section h4 {
+        margin-left: 1rem;
+        text-align: left;
+    }
+}
+
+/* >= 1367px */
+@media (min-width: 1367px) {
+
+}

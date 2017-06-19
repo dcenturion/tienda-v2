@@ -1,0 +1,125 @@
+<div class="row app-footer">
+    <div class="col-xs-12">
+
+        <div class="footer-info" style="border-top: solid 0.8rem <?=$viewDataArray["principal"]->ColorMenuHorizontal; ?>">
+
+            <div class="row footer-top">
+                <div class="col-xs-12">
+
+                    <div class="footer-body">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-12 col-md-4">
+
+                                <div class="footer-body-block">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-4 col-md-12">
+                                            <img src="/_imagenes/usuarios/<?=$viewDataArray["principal"]->ImagenLogoColorNegativo;?>" class="img-responsive" alt="Alternate logo image">
+
+                                            <br />
+                                            <br />
+                                            <br />
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-12">
+                                            <p>
+                                                <a href="/" target="_blank">¿Cómo comprar?</a>
+                                            </p>
+                                            <p>
+                                                <a href="/" target="_blank">Preguntas frecuentes</a>
+                                            </p>
+
+                                            <br />
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-12">
+                                            <h4 class="text-uppercase" style="color:<?=$viewDataArray["principal"]->ColorMenuHorizontal; ?>">¿Consultas?</h4>
+                                            <p>
+                                                Comunícate al <a href="tel:<?=$viewDataArray["principal"]->NroTelefonoSoporteCliente; ?>"><?=$viewDataArray["principal"]->NroTelefonoSoporteCliente; ?></a>
+                                                <br />
+                                                o escríbenos a <a href="mailto:<?=$viewDataArray["principal"]->EmailSoporteCliente; ?>"><?=$viewDataArray["principal"]->EmailSoporteCliente; ?></a>
+                                            </p>
+                                        </div>
+                                        <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+                                            <br />
+                                            <img src="/_vistas/theme/eguru-2017/images/credit-cards.png" class="img-responsive" alt="Credit cards image">
+                                        </div>
+                                    </div>
+                                </div>
+								
+                            </div>
+                            <div class="col-xs-6 col-sm-12 col-md-8">
+
+                                <br class="hidden-xs hidden-md hidden-lg" />
+                                <br class="hidden-xs hidden-md hidden-lg" />
+                                <br class="hidden-xs hidden-md hidden-lg" />
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <h4 class="text-uppercase" style="color:<?=$viewDataArray["principal"]->ColorMenuHorizontal; ?>">Categorías</h4>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 text-right hidden-xs">
+                                        <img src="/_vistas/theme/eguru-2017/images/credit-cards.png" class="img-responsive" alt="Credit cards image">
+                                    </div>
+                                </div>
+                                <div class="row">
+								
+									<?php
+										        $categoria = "";
+											    foreach ($viewDataArray["categorias"] as $key => $reg) {
+													if($reg->Categoria == $categoria ){
+
+													}else{
+														$categoria = $reg->Categoria;														
+									?>
+                                    <div class="col-xs-12 col-sm-3">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <span class="title"><?=$reg->Categoria; ?></span>
+                                                <ul>
+												<?php
+														foreach ($viewDataArray["sub_categorias"] as $key => $regB) {
+                                                            if($reg->Categoria == $regB->Categoria){																
+												?>												
+                                                    <li><a href="/catalogo-productos/entidad/<?=$empresa; ?>/categoria/<?=$categoria = $reg->Categoria; ?>/subcategoria/<?=$regB->SubCategoria; ?>"><?=$regB->SubCategoria; ?></a></li>
+												<?php
+															}
+														}	
+												?>													
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <?php
+													}
+												}	
+									?>
+
+                                   
+								</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row footer-bottom">
+                <div class="col-xs-12 text-center">
+                    <p>
+                        <a href="/home/terms-and-conditions">Términos y condiciones</a>
+                        &nbsp; | &nbsp;
+                        <a href="/home/privacy-policies">Políticas de privacidad</a>
+                        <br />
+                        E-Guru ® Todos los derechos reservados 2015 - 2017 | Desarrollado por OwlGroup
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</div>
+<!--END-->
+
+</body>
+</html>

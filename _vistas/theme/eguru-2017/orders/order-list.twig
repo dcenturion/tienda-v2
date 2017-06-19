@@ -1,0 +1,120 @@
+{% extends 'layouts/_master.twig' %}
+
+{% block main %}
+
+    <!-- begin content -->
+    <div class="row app-container">
+        <div class="col-xs-12">
+
+            <br />
+            <br />
+
+            <div class="center-block shopping-cart-center-block">
+
+                {###############################################}
+                {# Información de demostración sobre productos #}
+                {% set products = [{
+                    categoryName: 'Libro | Finanzas',
+                    name        : 'Invierte.pe',
+                    quantity    : 1,
+                    type        : 'virtual'
+                },{
+                    categoryName: 'Tecnología | Celulares',
+                    name        : 'Huawei P9',
+                    quantity    : 1,
+                    type        : 'physical'
+                },{
+                    categoryName: 'Cursos | Diplomado',
+                    name        : 'Diplomado de administración',
+                    quantity    : 1,
+                    type        : 'face-to-face-course'
+                },{
+                    categoryName: 'Libros | Finanzas',
+                    name        : 'Ingresos del Gobierno Central',
+                    quantity    : 1,
+                    type        : 'virtual'
+                }] %}
+
+                {###############################################}
+
+                {# Creando la lista de productos #}
+                <div class="row shopping-cart-product-list">
+                    <div class="col-xs-12">
+
+                        <h3 class="text-uppercase"><strong>Compras realizadas</strong></h3>
+
+                        <br />
+
+                        <div class="row">
+                            <div class="col-xs-12">
+
+                                {% if products|length %}
+                                    <div class="panel">
+                                        <div class="table-responsive">
+
+                                            {# Tabla #}
+                                            <table class="table">
+                                                <tr>
+                                                    <th>Artículo</th>
+                                                    <th class="text-center">Cantidad</th>
+                                                    <th class="text-center">Acción</th>
+                                                </tr>
+
+                                                {% for product in products %}
+
+                                                    <tr>
+                                                        <td>
+                                                            <h4><strong>{{ product.name }}</strong></h4>
+                                                            <span>{{ product.categoryName }}</span>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <strong><span class="quantity">{{ product.type != 'virtual' ? product.quantity }}</span></strong>
+                                                        </td>
+                                                        <td class="text-center">
+
+                                                            {% if product.type == 'virtual' %}
+
+                                                                <a href="/" class="btn btn-preview">
+                                                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                                                    <strong>LEER</strong>
+                                                                </a>
+
+                                                            {% elseif product.type == 'physical' %}    
+
+                                                                <h4><strong>Envío de proceso</strong></h4>
+
+                                                            {% elseif product.type == 'face-to-face-course' %}    
+
+                                                                <h4><strong>Adquirido</strong></h4>
+
+                                                            {% endif %}
+
+                                                        </td>
+                                                    </tr>
+
+                                                {% endfor %}
+
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <p class="text-primary">No tienes compras realizadas.</p>
+                                {%endif%}
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <br />
+                <br />
+                <br />
+
+            </div>
+        </div>
+    </div>
+    <!-- end content -->
+
+{% endblock main %}

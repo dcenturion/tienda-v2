@@ -1,0 +1,162 @@
+#style-switcher h2 a { background: #b7a42f none repeat scroll 0 0 }
+
+/*START SCROLL TO TOP*/
+.topcontrol {background: #067bd0 none repeat scroll 0 0;}
+/*END SCROLL TO TOP*/
+
+.section-title h2 span { color: #b7a42f }
+.section-title div {background: #b7a42f  none repeat scroll 0 0;}
+
+.btn-light-bg {
+    background: #b7a42f none repeat scroll 0 0;
+    border: 2px solid #b7a42f;
+}
+/*START MENU*/
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #edecea !important;
+    background-color: transparent;
+}
+.menu-top li a:hover { color: #fff !important }
+.navbar-default.menu-shrink li a:hover { color: #b7a42f !important }
+.navbar-default .navbar-toggle .icon-bar { background-color: #b7a42f }
+/*END MENU*/
+
+
+.hero-text h2 span {
+  color: #b7a42f;
+}
+.btn-home-bg-one {
+    background: #b7a42f none repeat scroll 0 0;
+    border: 2px solid #b7a42f;
+}
+.btn-home-bg-two:hover,
+.btn-home-bg-two:focus {
+    background: #b7a42f;
+    border: 2px solid #b7a42f;
+    color: #fff;
+}
+
+.single_feature:hover { background: #b7a42f }
+.single_feature i {background: #b7a42f none repeat scroll 0 0;border: 1px solid #b7a42f;}
+.single_feature:hover i {color: #b7a42f;}
+
+.progress-bar > span {background: #b7a42f none repeat scroll 0 0;}
+
+
+.single_why_one {background: #b7a42f;}
+.single_why_three {background: #b7a42f;}
+
+
+.counter {background:#b7a42f;}
+
+.our_work_menu ul li:hover,
+.our_work_menu ul li.active {
+    border-color: #b7a42f;
+    background: #b7a42f;
+}
+
+
+
+
+.grid figcaption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    background:#b7a42f;
+    color: #ed4e6e;
+}
+
+.grid figcaption a:hover { color: #b7a42f }
+
+.about_project_details ul li i {color: #b7a42f;}
+.about_project_details ul li a {color: #b7a42f;}
+
+.tema-member .team-thumbnail .overlay {background: rgba(0,191,243,0.6);}
+
+.tema-member:hover .info h3 { color: #b7a42f }
+
+.slide_bg{background:#b7a42f;}
+
+.testomonial_left {border-right: 1px solid #03AAD7;}
+
+.carousel-indicators .active {
+border: 1px solid #b7a42f;
+background: #b7a42f none repeat scroll 0 0;
+}
+
+.blog-social ul li a i:hover {background: #b7a42f;}
+
+.single_blog_dsc h3 a:hover { color: #b7a42f }
+
+ul.blog_pagination li a:hover {
+background: #b7a42f;
+border: 1px solid #b7a42f;
+}
+
+.blog_sidebar_title {color: #b7a42f;}
+
+.search input:hover,
+.search input:focus {border: 1px solid #b7a42f;}
+
+.categories ul li a:hover { color: #b7a42f }
+
+.tag a:hover{background:#b7a42f;border: 1px solid #b7a42f;}
+.single_blog_dsc a {color: #b7a42f;}
+
+.btn-newsletter-bg {
+    background: #b7a42f none repeat scroll 0 0;
+    border: 2px solid #b7a42f;
+}
+.btn-newsletter-bg:hover,
+.btn-newsletter-bg:focus {
+    background: #03aad7;
+    color: #fff;
+    border: 2px solid #03aad7;
+}
+
+.ccr-price-title {background: #b7a42f none repeat scroll 0 0;}
+
+.ccr-price-value {
+    background: #b7a42f; /* Old browsers */ /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b7a42f), color-stop(100%,#b7a42f)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #b7a42f 0%,#b7a42f 100%); /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
+    background: -webkit-linear-gradient(top, #b7a42f 0%, #b7a42f 100%);
+    background: linear-gradient(to bottom, #b7a42f 0%,#b7a42f 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7a42f', endColorstr='#b7a42f',GradientType=0 ); /* IE6-9 */
+}
+
+
+.contact input:hover,
+.contact input:focus {
+    border: 1px solid #b7a42f;
+    box-shadow: none;
+    outline: 0 none;
+}
+.contact textarea:hover,
+.contact textarea:focus {
+    border: 1px solid #b7a42f;
+    box-shadow: none;
+    outline: 0 none;
+}
+
+.btn-contact-bg:hover,
+.btn-contact-bg:focus {
+    background: #b7a42f;
+    border: 1px solid #b7a42f!important;
+    color: #fff;
+}
+
+.success {color: #b7a42f;}
+
+.single_address {background: #b7a42f none repeat scroll 0 0;}
+
+.single_social_profile ul li a i:hover{background:#b7a42f;}
+
+
+.section-top-title ol li a:hover { color: #b7a42f!important }
+
+
+

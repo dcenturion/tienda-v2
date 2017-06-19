@@ -1,0 +1,57 @@
+{# Banner #}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="slider">
+            
+            {% for slide in slides %}
+                
+                <div class="slide">
+                    <a {{ slide.link ? "href=" ~ slide.link }}
+                        target="_blank">
+                        <img class="img-responsive" src="{{ slide.image }}" alt="Banner image">
+                    </a>
+                </div>
+                    
+            {% else %}
+                
+                {# Slides por defecto #}
+                <div class="slide">
+                    <a target="_blank">
+                        <img class="img-responsive" src="/_vistas/theme/eguru-2017/images/banner-1.jpg" alt="Banner image">
+                        <div style="position: absolute; top: 0rem; left: 0rem; width: 100%; height: 100%;text-align: center;">
+                            <img class="img-responsive" src="/_vistas/theme/eguru-2017/images/banner-content-1.png" alt="Banner content image">
+                        </div>
+                    </a>
+                </div>
+                <div class="slide">
+                    <a target="_blank">
+                        <img class="img-responsive" src="/_vistas/theme/eguru-2017/images/banner-1.jpg" alt="Banner image">
+                        <div style="position: absolute; top: 0rem; left: 0rem; width: 100%; height: 100%;text-align: center;">
+                            <img class="img-responsive" src="/_vistas/theme/eguru-2017/images/banner-content-2.png" alt="Banner content image">
+                        </div>
+                    </a>
+                </div>
+                <div class="slide">
+                    <a target="_blank">
+                        <img class="img-responsive" src="/_vistas/theme/eguru-2017/images/banner-1.jpg" alt="Banner image">
+                        <div style="position: absolute; top: 0rem; left: 0rem; width: 100%; height: 100%;text-align: center;">
+                            <img class="img-responsive" src="/_vistas/theme/eguru-2017/images/banner-content-3.png" alt="Banner content image">
+                        </div>
+                    </a>
+                </div>
+                
+            {% endfor %}
+            
+        </div>
+        <script>
+            $(document).ready(function () {
+                $(".slider").bxSlider({
+                    auto: true,
+                    speed: 1000,
+                    pause: 5000,
+                    controls: true
+                });
+            });
+        </script>
+    </div>
+</div>

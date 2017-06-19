@@ -1,0 +1,153 @@
+<div class="row app-container">
+    <div class="col-xs-12">
+       <br>
+        <br>
+
+        <div class="center-block shopping-cart-center-block">
+
+
+
+            <div class="row shopping-cart-product-list">
+                <div class="col-xs-12">
+
+                    <h3 class="text-uppercase"><strong>Carrito de compras</strong></h3>
+                    <br>
+                    <br>
+                    <div class="row checkout-line">
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div class="col-xs-4 checkout-step active text-center">
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a href="/carrito-compras/entidad/<?=$empresa; ?>/pedido/<?=$pedido; ?>" class="checkout-step-circle"><strong>1</strong></a>
+                                    <span>Verifica tus datos</span>
+                                </div>
+                                <div class="col-xs-4 checkout-step  text-center">
+                                    <div class="progress">
+                                        <div class="progress-bar "></div>
+                                    </div>
+                                    <a href="/informacion-pago/entidad/<?=$empresa; ?>/pedido/<?=$pedido; ?>" class="checkout-step-circle"><strong>2</strong></a>
+                                    <span>Información de pago</span>
+                                </div>
+                                <div class="col-xs-4 checkout-step  text-center">
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a class="checkout-step-circle"><strong>3</strong></a>
+                                    <span>¡Listo!</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <div class="panel">
+                                <div class="table-responsive">
+
+                                    <table class="table">
+                                        <tbody><tr>
+                                            <th>Artículo</th>
+                                            <th class="text-center">Cantidad</th>
+                                            <th class="text-center">Precio</th>
+                                            <th class="text-center"></th>
+                                        </tr>
+
+
+										<?php
+										    $totPedido = 0;
+											foreach ($detallePedido as $key => $reg) {
+												$totPedido += $reg->Precio;
+												$CodigoPedido = $reg->CodigoPedido;
+					                            if($reg->Moneda == "Soles"){ $simboloMoneda = "S/. "; }else{ $simboloMoneda= "$ "; }
+										?>	
+										
+
+                                        <tr>
+                                            <td>
+                                                <h4><strong><?=$reg->Nombre; ?></strong></h4>
+                                                <span><?=$reg->Categoria ." | ". $reg->SubCategoria; ?></span>
+                                            </td>
+                                            <td class="text-center">
+                                                <strong><span class="quantity"><?=$reg->Cantidad; ?></span></strong>
+                                            </td>
+                                            <td class="text-center">
+                                                <strong><span class="price"><?= $simboloMoneda . " ".$reg->Precio; ?></span></strong>
+                                            </td>
+                                            <td class="text-center">
+                                                 <a href="#" id="borrar-item" onclick="borrarItemPedido('<?=$reg->Codigo; ?>');" ><i class="glyphicon glyphicon-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <?php 
+										    }
+										?>
+
+                                        <tr>
+                                            <td colspan="2">
+                                                <h4><strong>Total a pagar:</strong></h4>
+                                            </td>
+                                            <td colspan="2" class="text-center text-uppercase">
+                                                <strong><span class="total-price"><?= $totPedido; ?></span></strong>
+                                                <br>
+                                                <br>
+                                                <a href="/informacion-pago/entidad/<?= $empresa; ?>/pedido/<?=$CodigoPedido;?>" class="btn btn-sell-now"><strong>Pagar</strong></a>
+                                            </td>
+                                        </tr>
+
+                                        </tbody></table>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+        </div>
+    </div>
+</div>
+
+<script>
+function borrarItemPedido(codigoItem) {
+	borrarItem(codigoItem);
+}				
+function borrarItem(codigoItem) {
+
+	    var ruta = '/system/_vistas/se_pedidos.php?Main=BorrarItem';
+	    var parametros = {
+			'entidad':"<?php echo $empresa; ?>",'codigoItem':codigoItem,'CodigoPedido':"<?php echo $pedido; ?>"
+		};
+		
+		// alert(codigoItem);
+		alertify.success("El Item se eliminó correctamente");
+		
+		$.ajax({
+			data: parametros,
+			url: ruta,
+			type: 'get',
+			async: true,
+			success: function(response) {
+				// alertify.success(response);
+				location.reload(true);
+				// var l_a_json = eval('(' + response + ')');
+				// var mensaje = l_a_json["msj"];
+				// var nroItem = l_a_json["nro_articulos"];
+			
+				// location.reload(true);
+			}
+		});
+		
+	
+}	
+</script>

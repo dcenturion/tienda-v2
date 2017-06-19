@@ -1,0 +1,48 @@
+{% extends 'layouts/_master.twig' %}
+
+{% block main %}
+
+    <!-- begin content -->
+    <div class="row app-container">
+        <div class="col-xs-12">
+
+            <br />
+            <br />
+
+            <div class="center-block shopping-cart-center-block">
+
+                {# Creando el mensaje de información #}
+                <div class="row shopping-cart-product-list">
+                    <div class="col-xs-12">
+                        
+                        <br />
+
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <p>
+                                    <i class="icon-mail"></i>
+                                </p>
+                                <h1><strong>¡Revisa tu email!</strong></h1>
+                                <p class="checkout-confirmed-message">
+                                    Hemos enviado un mensaje para que puedas 
+                                    validar tu <br class="hidden-xs" /> correo electrónico. Si no 
+                                    encuentras el mensaje en tu bandeja de entrada <br class="hidden-xs" />
+                                    intenta en los no deseados o spam.
+                                </p>
+                                <br/>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <br />
+                <br />
+                <br />
+
+            </div>
+        </div>
+    </div>
+    <!-- end content -->
+
+{% endblock main %}

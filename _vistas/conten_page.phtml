@@ -1,0 +1,204 @@
+
+
+
+
+<!-- begin content -->
+<div class="row">
+	<div class="col-xs-12">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="slider">
+				
+					<?php
+						foreach ($productosCatalogo as $key => $regA) {
+							
+							if($regA->ProductoPromocionado == "SI"){
+					?>					
+							<div class="slide">
+								<a target="_blank"  >
+									<img class="img-responsive" src="/system/_imagenes/banner/banner-1.jpg" alt="Banner image">
+									<div style="position: absolute; top: 7rem; left: 15%; width: 100%; height: 100%;text-align: center;">
+									    <div style="float:left;width:32%">
+										    <img class="img-responsive" width="300px" src="/system/_articulos/<?=$regA->ImagenPresentacionA;?>" alt="Banner content image">
+										</div>
+									    <div style="float:left;width:40%;padding-top:30px;">
+									  
+											<?php
+											if($regA->TipoProductoCodigo == 1 ){
+											?> 
+											<a href="/producto-ebook/id/<?=$regA->AliasId;?>/entidad/<?=$regA->SubDominio;?>" style="color: #fff;">
+												<h4 style="font-size: 1.7em;" ><strong><?=$regA->Nombre; ?></strong></h4>
+											</a>
+											<?php
+											}else{
+											?>
+											<a href="/producto-programa-educativo/id/<?=$regA->AliasId;?>/entidad/<?=$regA->SubDominio;?>" style="color: #fff;">
+												<h4 style="font-size: 1.7em;" ><strong><?=$regA->Nombre; ?></strong></h4>
+											</a>
+											
+											<?php
+											}
+											
+											?>
+											<p style="color: #e6e4e4;font-size: 1.2em;" >
+												<?=$regA->Categoria ." | ". $regA->SubCategoria; ?>
+											</p>
+											<p style="color: #e6e4e4;font-size: 1.2em;" >
+											
+												 <?php
+													$lenght_cadena = strlen($regA->Descripcion);
+													if($lenght_cadena > 90 ){
+														echo substr($regA->Descripcion,0, 90)."...";
+													}else{
+														echo $regA->Descripcion;																
+													}
+												 ?>
+											</p>											
+										</div>
+											
+									</div>
+								</a>
+							</div>
+					<?php
+					        }
+						}
+					?>	
+	
+					
+					
+					
+
+
+				</div>
+				<script>
+					$(document).ready(function () {
+						$(".slider").bxSlider({
+							auto: true,
+							speed: 1000,
+							pause: 5000,
+							controls: true
+						});
+					});
+				</script>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row app-container">
+	<div class="col-xs-12">
+
+
+
+		<br class="hidden-xs hidden-sm" />
+		<br class="hidden-xs hidden-sm" />
+
+		<div class="center-block home-product-list-center-block">
+
+
+			<div class="row product-list" id="product-list">
+				<div class="col-xs-12">
+					<h3 class="text-uppercase"><strong>Los mejores productos</strong></h3>
+
+					<div class="row">
+				
+						<?php
+							foreach ($productosCatalogo as $key => $reg) {
+						?>	
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="row card-product" id="<?=$reg->AliasId;?>" >
+								<div class="col-xs-12">
+									<div class="row card-body">
+										<div class="col-xs-12">
+											<div class="row">
+												<div class="col-xs-12 text-center">
+													<img class="img-responsive" src="/system/_articulos/<?=$reg->ImagenPresentacionA;?>" alt="Product image">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 text-center">
+
+													<?php
+													if($reg->TipoProductoCodigo == 1 ){
+												    ?> 
+													<a href="/producto-ebook/id/<?=$reg->AliasId;?>/entidad/<?=$reg->SubDominio;?>">
+														<h4><strong><?=$reg->Nombre; ?></strong></h4>
+													</a>
+													<?php
+													}else{
+													?>
+													<a href="/producto-programa-educativo/id/<?=$reg->AliasId;?>/entidad/<?=$reg->SubDominio;?>">
+														<h4><strong><?=$reg->Nombre; ?></strong></h4>
+													</a>
+													
+													<?php
+													}
+													
+													?>
+													<p>
+														<?=$reg->Categoria ." | ". $reg->SubCategoria; ?>
+													</p>
+													
+													<p>
+		                                                 <?php
+														    $lenght_cadena = strlen($reg->Descripcion);
+														    if($lenght_cadena > 90 ){
+																echo substr($reg->Descripcion,0, 90)."...";
+															}else{
+																echo $reg->Descripcion;																
+															}
+														 ?>
+													</p>
+													
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row card-footer">
+										<div class="col-xs-12">
+											<div class="row">
+												<div class="col-xs-12 text-center">
+												
+													<a href="#<?=$reg->AliasId;?>" class="btn btn-wish" onclick="seleccionaProductoListaPreferencias('<?=$reg->AliasId;?>','<?=$reg->SubDominio;?>','<?=$cod_cliente?>');" ><i class="icon-heart"></i></a>
+													
+													
+													<a href="/" class="btn btn-share"><i class="icon-share-square"></i></a>
+													<?php 
+														if($reg->Moneda == "Soles"){ $simboloMoneda= "S/. "; }else{ $simboloMoneda= "$ "; }
+														
+														if($reg->Precio == 0){
+															
+															if($reg->TipoArticulos == 2 ){
+												                echo '<a href="/producto-programa-educativo/id/'.$reg->AliasId.'/entidad/'.$reg->SubDominio.'" class="btn btn-sell"><strong>Inscríbete</strong></a>';														
+															}else{
+												                echo '<a href="/" class="btn btn-sell"><i class="glyphicon glyphicon-shopping-cart"></i> <strong>GRATIS</strong></a>';																
+															}
+															
+													?>		
+													<?php }else{ ?>
+													
+															<a href="#<?=$reg->AliasId;?>" class="btn btn-sell" id="btn_<?=$reg->AliasId;?>" onclick="seleccionaProducto('<?=$reg->AliasId;?>','<?=$reg->SubDominio;?>');" ><i class="glyphicon glyphicon-shopping-cart"></i> <strong><?= $simboloMoneda . $reg->Precio; ?></strong></a>								
+													<?php }?>
+													
+												 </div>
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+							</div>                
+						</div>
+						<?php }?>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+			<br />
+			<br />
+	</div>
+
+</div>
+<!-- end content -->
+

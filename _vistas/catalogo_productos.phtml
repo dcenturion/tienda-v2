@@ -1,0 +1,119 @@
+<div class="row app-container">
+    <div class="col-xs-12">
+        <br class="hidden-xs hidden-sm">
+        <br class="hidden-xs hidden-sm">
+        <div class="center-block home-product-list-center-block">
+            <div class="row">
+                <div class="col-xs-12 col-md-3">
+                    <ul class="nav nav-pills nav-stacked nav-stacked-subcategory">
+						<?php
+							foreach ($categoriaFiltro as $key => $reg) {
+						        if($subcategoria == $reg->SubCategoria){
+						?>
+                        <li class="active">
+                            <a href="/catalogo-productos/entidad/<?=$empresa;?>/categoria/<?=$categoria;?>/subcategoria/<?= $reg->SubCategoria; ?>"><input type="checkbox" checked="true"> <?= $reg->SubCategoria; ?></a>
+                        </li>						
+                        <?php						
+								}else{
+						?>	
+                        <li>
+                            <a href="/catalogo-productos/entidad/<?=$empresa;?>/categoria/<?=$categoria;?>/subcategoria/<?= $reg->SubCategoria; ?>"><input type="checkbox" ><?= $reg->SubCategoria; ?></a>
+                        </li >						
+                        <?php							
+								}
+						?>	  
+
+					    <?php }
+						?>	  						
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-md-9">
+                    <br class="hidden-md hidden-lg">
+                    <div class="row product-list">
+                        <div class="col-xs-12">
+                            <h3 class="text-uppercase"><strong></strong></h3>
+
+                            <div class="row">
+
+							<?php
+								foreach ($productosCatalogo as $key => $reg) {
+									// var_dump($reg);
+							?>	    
+							        <div class="col-xs-12 col-sm-6 col-md-4">
+
+                                    <div class="row card-product">
+                                        <div class="col-xs-12">
+                                            <div class="row card-body">
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 text-center">
+                                                            <img class="img-responsive" src="/system/_articulos/<?=$reg->ImagenPresentacionA;?>" alt="Product image">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12 text-center">
+                                                            <a href="/producto-programa-educativo/id/<?=$reg->AliasId;?>/entidad/<?=$reg->SubDominio;?>">
+                                                                <h4><strong><?=$reg->Nombre; ?></strong></h4>
+                                                            </a>
+                                                            <p>
+														    <?=$reg->Categoria ." | ". $reg->SubCategoria; ?>
+                                                            </p>
+															<p>
+																 <?php
+																	$lenght_cadena = strlen($reg->Descripcion);
+																	if($lenght_cadena > 90 ){
+																		echo substr($reg->Descripcion,0, 90)."...";
+																	}else{
+																		echo $reg->Descripcion;																
+																	}
+																 ?>
+															</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+											
+                                            <div class="row card-footer">
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                     	<div class="col-xs-12 text-center">
+                                                        <a href="#<?=$reg->AliasId;?>" class="btn btn-wish" onclick="seleccionaProductoListaPreferencias('<?=$reg->AliasId;?>','<?=$reg->SubDominio;?>','<?=$cod_cliente?>');" ><i class="icon-heart"></i></a>
+													
+														<a href="/" class="btn btn-share"><i class="icon-share-square"></i></a>
+														<?php 
+															if($reg->Moneda == "Soles"){ $simboloMoneda= "S/. "; }else{ $simboloMoneda= "$ "; }
+															if($reg->Precio == 0){
+														?>		
+																<a href="/" class="btn btn-sell"><i class="glyphicon glyphicon-shopping-cart"></i> <strong>GRATIS</strong></a>								
+														<?php }else{ ?>
+																<a href="#<?=$reg->AliasId;?>" class="btn btn-sell" id="Alias-<?=$reg->AliasId;?>" onclick="seleccionaProducto('<?=$reg->AliasId;?>','<?=$reg->SubDominio;?>');" ><i class="glyphicon glyphicon-shopping-cart"></i> <strong><?= $simboloMoneda . $reg->Precio; ?></strong></a>								
+														<?php }?>
+														
+													    </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>               
+									</div>
+                            
+							
+							
+							<?php } ?>
+                            </div>
+
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</script>

@@ -1,0 +1,56 @@
+@media screen and (max-width: 1570px) {
+    .PanelUser{
+        width: 31%;			
+	}
+
+}
+
+@media screen and (max-width: 1390px) {
+    .PanelUser{
+        width: 26%;	
+	}
+
+}
+@media screen and (max-width: 1250px) {
+    .PanelUser{
+        width: 25.5%;		
+	}
+	.menuHorz002 ul .busquedaGeneral .icon-search {
+        padding: 0.3em 12px 0.3em 11px;		
+	}
+}
+@media screen and (max-width: 1170px) {
+    .PanelUser{
+        width: 22%;		
+	}
+
+}
+
+@media screen and (max-width: 1090px) {
+    .PanelUser{
+        width:14%;		
+	}
+    .menuHorz002 ul .busquedaGeneral	{
+	    width: 43%;
+	}
+    .menuHorz002 ul .busquedaGeneral input	{
+	    width: 87%;		
+	}
+	.menuHorz002 ul .busquedaGeneral .icon-search {
+        padding: 0.3em 12px 0.25em 11px;		
+	}	
+}
+@media screen and (max-width: 900px) {
+    .PanelUser{
+        width: 15%;		
+	}
+    .menuHorz002 ul .busquedaGeneral	{
+	    width: 33%;
+	}
+    .menuHorz002 ul .busquedaGeneral input	{
+	    width: 80%;		
+	}
+	.menuHorz002 ul .busquedaGeneral .icon-search {
+        padding: 0.3em 12px 0.32em 11px;		
+	}	
+}

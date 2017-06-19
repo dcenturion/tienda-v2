@@ -1,0 +1,59 @@
+{% extends 'layouts/_master.twig' %}
+
+{% block main %}
+
+    <!-- begin content -->
+    <div class="row app-container">
+        <div class="col-xs-12">
+
+            <br />
+            <br />
+
+            <div class="center-block shopping-cart-center-block">
+
+                {# Creando la lista de productos #}
+                <div class="row shopping-cart-product-list">
+                    <div class="col-xs-12">
+
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+
+                        {# Creando la linea del proceso de compra #}
+                        {% include 'shopping-cart/partials/_checkout-line.twig' with { 
+                            'step': 3
+                        } %}
+
+                        <br />
+                        <br />
+
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <p>
+                                    <i class="icon-check-circle"></i>
+                                </p>
+                                <h1><strong>Muchas gracias por su compra</strong></h1>
+                                <p class="checkout-confirmed-message">
+                                    Tu compra ha sido procesada correctamente. 
+                                    Puedes ver el <br class="hidden-xs" /> estado de compra desde la 
+                                    sección "Compras"
+                                </p>
+                                <br/>
+                                <a href="/order" class="btn btn-confirm"><strong>VER COMPRAS</strong></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <br />
+                <br />
+                <br />
+
+            </div>
+        </div>
+    </div>
+    <!-- end content -->
+
+{% endblock main %}

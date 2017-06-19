@@ -1,0 +1,180 @@
+{% extends 'layouts/_master.twig' %}
+
+{% block main %}
+
+    <!-- begin content -->
+    <div class="row app-container">
+        <div class="col-xs-12">
+
+            <br />
+            <br />
+
+            <div class="center-block shopping-cart-center-block">
+
+                {# Creando la lista de productos #}
+                <div class="row shopping-cart-product-list">
+                    <div class="col-xs-12">
+
+                        <h3 class="text-uppercase"><strong>Información de pago</strong></h3>
+
+                        <br />
+                        <br />
+
+                        {# Creando la linea del proceso de compra #}
+                        {% include 'shopping-cart/partials/_checkout-line.twig' with { 
+                            'step': 2
+                        } %}
+
+                        <br />
+                        <br />
+
+                        {# Formulario de información de pago #}
+                        <form class="row" method="post" action="/shopping-cart/checkout">
+                            <div class="col-xs-12 col-sm-6">
+
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h4><strong>Datos de facturación</strong></h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <input type="text" name="dni-ruc" class="form-control" placeholder="DNI o RUC">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <input type="text" name="business-name" class="form-control" placeholder="Razón social">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h4><strong>Dirección de facturación</strong></h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <input type="text" name="street" class="form-control" placeholder="Calle">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <input type="text" name="city" class="form-control" placeholder="Ciudad">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <input type="text" name="province" class="form-control" placeholder="Provincia">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <input type="text" name="postal-code" class="form-control" placeholder="Código postal">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <input type="text" name="country" class="form-control" placeholder="País">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <input type="checkbox" checked="true" id="terms-conditions">
+                                            <label for="terms-conditions">Acepto los <a href="/" target="_blank">términos y condiciones</a></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h4><strong>Datos de envío</strong></h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <input type="radio" checked="true" id="same-direction">
+                                            <label for="same-direction">Enviar a la misma dirección de facturación</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h4><strong>Información de pago</strong></h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <input type="text" name="card-number" class="form-control" placeholder="Número de tarjeta">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="form-group">
+                                            <select name="month" class="form-control">
+                                                <option disabled="true" selected="true" value="">MM</option>
+
+                                                {% for i in 1..12 %}
+                                                    <option value="{{ i }}">{{ i < 10 ? "0" }}{{ i }}</option>
+                                                {% endfor %}
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="form-group">
+                                            <select name="year" class="form-control">
+                                                <option disabled="true" selected="true" value="">AA</option>
+
+                                                {% set currentYear = now|date('Y') + 0 %}
+
+                                                {% for i in currentYear..(currentYear + 10) %}
+                                                    <option value="{{ i }}">{{ i }}</option>
+                                                {% endfor %}
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="form-group">
+                                            <input type="text" name="cvv" class="form-control" placeholder="CVV">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <input type="text" name="owner-name-card" class="form-control" placeholder="Nombre como aparece en la tarjeta">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 text-right">
+                                        <br />
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-sell">
+                                                <strong>PAGAR $234.00 EN 3 ARTÍCULOS</strong>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+                <br />
+                <br />
+                <br />
+
+            </div>
+        </div>
+    </div>
+    <!-- end content -->
+
+{% endblock main %}

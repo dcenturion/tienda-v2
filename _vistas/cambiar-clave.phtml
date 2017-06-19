@@ -1,0 +1,97 @@
+
+<div class="row app-container">
+    <div class="col-xs-12">
+
+        <br>
+        <br>
+
+        <div class="center-block shopping-cart-center-block">
+
+            <div class="row shopping-cart-product-list">
+                <div class="col-xs-12">
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3 class="text-uppercase"><strong>Cambiar Clave</strong></h3>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+
+                            <form class="row" action='javascript:void(null);'  enctype='multipart/form-data' id="formularioDatosUsuario">
+                                <div class="col-xs-12">
+
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <h4><strong>Información personal</strong></h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <input type="password" name="password1" class="form-control" placeholder="Contraseña Nueva" >
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <input type="password" name="password2" class="form-control" placeholder="Repite la Contraseña Nueva">
+                                            </div>
+                                        </div>                                       								
+										
+                                        <div class="col-xs-12 text-right">
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-confirm" id="botonFormA">
+                                                    <strong>ACTUALIZAR</strong>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+
+                   
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+        </div>
+    </div>
+</div>
+
+<script>	
+$('#botonFormA').on('click', '', function (e) {
+	cambiarContrasena('<?php echo $empresa; ?>','<?= $clienteGet; ?>');
+});				
+function cambiarContrasena(empresa,clienteGet) {
+        ///lanzamiento del API de culqui
+		
+		///Si el retorno del proceso de pago mediante culqui es TRUE, cierra la proforma 
+	    var ruta = '/system/_vistas/se_usuario_tienda.php?Main=CambiarContrasena&entidad='+empresa+'&clienteGet='+clienteGet+'';
+        alertify.success("Datos actualizados");
+		$.ajax({                        
+           type: "POST",                 
+           url: ruta,                     
+           data: $("#formularioDatosUsuario").serialize(), 
+           success: function(data)             
+           {
+			    // alertify.success(data);
+				var explode = function(){
+		         	 location.href="/"+empresa;
+				};
+				setTimeout(explode, 2000);			 
+           }
+        });
+		///Si el retorno del proceso de pago mediante culqui es FALSE, deja a la proforma en un estado de intento fallido 		
+}	
+</script>

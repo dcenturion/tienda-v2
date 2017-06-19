@@ -1,0 +1,438 @@
+<?php  
+// var_dump($productosCatalogo);
+// $productoCat=$productosCatalogo[0];
+if($productosCatalogo->Moneda=="Soles"){
+    $moneda="S/.";
+}elseif($productosCatalogo->Moneda=="Dolares"){
+    $moneda="$/.";
+}
+?>
+
+<div class="row app-container">
+    <div class="col-xs-12">
+
+        <div class="center-block product-view-center-block">
+
+
+            <div class="row product-view">
+                <div class="col-xs-12">
+
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-4 hidden-xs">
+                            <ul class="list-group list-group-course">
+                                <li class="list-group-item" style="text-align: center;">
+                                    <img class="img-responsive" src="/system/_articulos/<?=$productosCatalogo->ImagenPresentacionA;?>" width="80%" alt="Product image">
+                                </li>
+                                <li class="list-group-item list-group-item-alternate">
+                                    <h3 class="list-group-item-heading">
+                                        <strong>¿Qué aprenderá el alumno?</strong>
+                                    </h3>
+                                    <p class="list-group-item-text">
+                                        <?= $productosCatalogo->AprendizajeDelAlumno; ?>
+                                    </p>
+                                </li>
+                                <li class="list-group-item">
+                                    <h3 class="list-group-item-heading">
+                                        <strong>Área de conocimiento</strong>
+                                    </h3>
+                                    <p class="list-group-item-text">
+										<?= $productosCatalogo->AreaDeConocimiento; ?>
+                                    </p>
+                                </li>
+                                <li class="list-group-item list-group-item-important">
+                                    <h3 class="list-group-item-heading">
+                                        <strong>Importante</strong>
+                                    </h3>
+                                    <p class="list-group-item-text">
+									    <?= $productosCatalogo->NotaImportante; ?>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-8">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="page-header">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-8">
+                                                <h1>
+                                                    <strong><small><?= $productosCatalogo->TipoArticulos ?></small></strong>
+                                                    <br>
+                                                    <strong><?= $productosCatalogo->Nombre ?></strong>
+                                                </h1>
+                                            </div>
+                                            <div class="col-xs-12 col-md-4 btn-group-action">
+                                                <a href="#" onclick="seleccionaProductoListaPreferencias('<?=$idProducto;?>','<?=$empresa;?>','<?= $cod_cliente; ?>');" class="btn btn-wish"><i class="icon-heart"></i></a>
+                                                <a href="/" class="btn btn-share"><i class="icon-share-square"></i></a>
+                                            </div>
+                                            <div class="col-xs-12 hidden-md hidden-lg">
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row product-view-section" id="panel_entidades">
+                                <div class="col-xs-12">
+                                    <p>
+                                        <?= $productosCatalogo->Descripcion ?>
+                                    </p>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <h3>
+                                        <strong>Institución</strong>
+                                    </h3>
+								<?php
+									foreach ($entidadesEducativas as $key => $regA) {
+								?>										
+                                    <br>
+									<div>
+										<img class="img-responsive" src="/_imagenes/productos/<?=$regA->ImagenLogo; ?>" style="width:200px;">
+										<br>
+										<br>
+										<p><?=$regA->Descripcion; ?></p>
+									</div>
+								<?php
+									}
+								?>										
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <h3>
+                                                <strong>Profesores</strong>
+                                            </h3>
+                                            <br>
+                                        </div>
+                                    </div>
+											
+								<?php
+									foreach ($docentes as $key => $reg) {
+								?>										
+                                    <div class="row">
+                                        <div class="col-xs-4 text-center">
+								<?php
+									if($reg->Foto !== "") {
+								?>											
+									    <img class="img-responsive" src="/_imagenes/productos/<?=$reg->Foto; ?>" style="border-radius: 50px;width: 80px;">
+                                        								
+								<?php
+									}else{
+								?>	
+									    <img class="img-responsive" src="/_imagenes/productos/icon_user.png" style="border-radius: 50px;width: 80px;">
+                                       								
+								<?php
+									}
+								?>								
+										</div>
+                                        <div class="col-xs-8">
+                                            <h4><strong><?=$reg->Nombres; ?></strong></h4>
+                                            <p><?=$reg->Descripcion; ?> </p>
+                                            <br>
+                                            <br>
+                                        </div>
+                                    </div>
+									
+								<?php
+									}
+								?>	
+                                </div>
+                            </div>
+							
+                            <div class="row product-view-section property-section">
+                                <div class="col-xs-12">
+                                    <br>
+                                    <br>
+                                    <br>
+                                </div>
+								
+								<?php 
+								
+								if( $productosCatalogo->TipoArticulosCod == 2 ){
+								?>								
+                                <div class="col-xs-4 col-md-3 col-xs-offset-2 col-md-offset-0 text-center">
+                                    <i class="icon-calendar"></i>
+                                    <br class="hidden-lg">
+                                    <h4>
+                                        <small>Inicio</small><br>
+                                        <strong><?= date("d-m-Y",strtotime($productosCatalogo->FechaInicio)); ?></strong>
+                                    </h4>
+                                </div>
+								
+								<?php 
+								}
+								?>								
+								
+                                <div class="col-xs-4 col-md-3 text-center">
+                                    <i class="icon-usd"></i>
+                                    <br class="hidden-lg">
+                                    <h4>
+                                        <small>Costo</small><br>
+                                        <strong><?= $moneda.$productosCatalogo->Precio ?></strong>
+                                    </h4>
+                                </div>
+                                <div class="col-xs-12 col-md-6 text-center" id="panel_btn_compra_<?=$idProducto;?>">
+                                    <a href="#panel_entidades"  id="btn_<?=$idProducto;?>"  class="btn btn-sell" onclick="seleccionaProducto('<?=$idProducto;?>','<?=$empresa;?>');" ><i class="glyphicon glyphicon-shopping-cart"></i> <strong> Comprar </strong></a>
+                                </div>
+                            </div>							
+							
+							<?php 
+							
+							if( $productosCatalogo->TipoArticulosCod == 2 ){
+							
+							?>
+							
+                            <div class="row product-view-section property-section">
+                                <div class="col-xs-12">
+                                    <br class="hidden-sm hidden-md hidden-lg">
+                                    <br>
+                                    <br>
+                                </div>
+                                <div class="col-xs-6 col-md-4 text-center">
+                                    <i class="icon-calendar"></i>
+                                    <br>
+                                    <br>
+                                    <p>
+                                        <?= $productosCatalogo->DiasAsistencia ?>
+                                    </p>
+                                </div>
+                                <div class="col-xs-6 col-md-4 text-center">
+                                    <i class="icon-clock-o"></i>
+                                    <br>
+                                    <br>
+                                    <p>
+                                        <?= $productosCatalogo->Horarios ?>
+                                    </p>
+                                </div>
+                                <div class="col-xs-6 col-md-4 col-xs-offset-3 col-md-offset-0 text-center">
+                                    <br class="hidden-md hidden-lg">
+
+                                    <i class="icon-map-marker"></i>
+                                    <br>
+                                    <br>
+                                    <p>
+                                        <?= $productosCatalogo->Lugar ?>
+                                    </p>
+                                </div>
+                            </div>
+							
+							
+							<?php 
+							
+							    }
+							?>
+							
+							
+                            <div class="row product-view-section">
+                                <div class="col-xs-12">
+                                    <br>
+                                    <h3>
+                                        <strong>Temas</strong>
+                                    </h3>
+								<?php
+									foreach ($curricula as $key => $reg_curricula) {
+								?>
+								    <h3 style="font-size: 1.3em;">
+									<?= $reg_curricula->Descripcion; ?>
+									</h3>
+									
+									<p>
+                                        <?= $reg_curricula->Temas; ?>
+                                    </p>
+								<?php
+									}
+								?>									
+                                    
+									
+                                </div>
+                            </div>
+                            <div class="row product-view-section">
+                                <div class="col-xs-12">
+                                    <br>
+                                    <h3>
+                                        <strong>Requisitos</strong>
+                                    </h3>
+                                    <p>
+                                        <?= $productosCatalogo->Requisitos ?>
+                                    </p>
+                                </div>
+                            </div>
+							
+
+                      
+
+                            <div class="row product-view-section">
+                                <div class="col-xs-12">
+                                    
+									
+								    <form class="row" method="post" action='javascript:void(null);'  enctype='multipart/form-data' id="formularioConsultas">
+                                        <div class="col-xs-12 col-md-8">
+
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <br>
+                                                    <h3>
+                                                        <strong>Consultas sobre este artículo</strong>
+                                                    </h3>
+                                                    <p>
+                                                        Si tienes alguna consulta sobre este
+                                                        producto por favor escríbenos mediante
+                                                        el siguiente formulario de contacto:
+                                                    </p>
+                                                </div>
+                                            </div>
+											
+											<div class="row">											
+												<div class="col-xs-12">
+													<div class="form-group">
+														<?php
+														if($datosUser->Email ==""){
+														    $readonly = "";
+														}else{
+														    $readonly = "readonly";												
+														}
+														?>
+														<input type="text" name="nombre" class="form-control" placeholder="Nombres y Apellidos" value="<?= $datosUser->Nombre?>" <?=$readonly; ?> >
+													</div>
+												</div>
+											</div>
+											
+											<div class="row">
+												<div class="col-xs-12">
+													<div class="form-group">
+														<?php
+														if($datosUser->Email ==""){
+														    $readonly = "";
+														}else{
+														    $readonly = "readonly";												
+														}
+														?>									
+														<input type="text" name="email" class="form-control" placeholder="Email" value="<?= $datosUser->Email; ?>" <?=$readonly; ?>>
+													</div>
+												</div>	   
+											</div>	   
+											
+                                            <div class="row">
+												<div class="col-xs-12">
+													<div class="form-group">
+																					
+														<input type="text" name="telefono" class="form-control" placeholder="Telefono" value="<?= $datosUser->Telefono; ?>">
+													</div>
+												</div>	   
+											</div>	   
+											
+																						
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <textarea name="comment" id="comment" class="form-control" placeholder="Escribe aquí tu consulta" rows="5"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 text-right">
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-confirm"  id="botonConsultas">
+                                                            <strong>ENVIAR</strong>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </form>
+
+								
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <br>
+        <br>
+
+        <div class="center-block home-product-list-center-block">
+
+            <div class="row product-list">
+                <div class="col-xs-12">
+                    <h3 class="text-uppercase"><strong>Productos relacionados</strong></h3>
+                    <div class="row">
+					<?php
+						foreach ($productosRelacionados as $key => $reg) {
+					?>	
+								
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="row card-product">
+                                <div class="col-xs-12">
+                                    <div class="row card-body">
+                                        <div class="col-xs-12">
+                                            <div class="row">
+                                                <div class="col-xs-12 text-center">
+                                                    <img class="img-responsive" src="/_vistas/theme/eguru-2017/images/product-image-sample-5.jpg" alt="Product image">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 text-center">
+                                                    <a href="/product/laptop-hp-fg382-92">
+                                                        <h4><strong><?= $reg->Nombre;  ?></strong></h4>
+                                                    </a>
+                                                    <p>
+                                                        <?=$reg->Categoria ." | ". $reg->SubCategoria; ?>
+                                                    </p>
+                                                    <p>
+                                                       <?=$reg->Descripcion; ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row card-footer">
+                                        <div class="col-xs-12">
+                                            <div class="row">
+                                                <div class="col-xs-12 text-center">
+                                                    <a href="/" class="btn btn-wish"><i class="icon-heart"></i></a>
+                                                    <a href="/" class="btn btn-share"><i class="icon-share-square"></i></a>
+		                                            <?php 
+														if($reg->Moneda == "Soles"){ $simboloMoneda= "S/. "; }else{ $simboloMoneda= "$ "; }
+														if($reg->Precio == 0){
+													?>		
+													
+															<a href="/producto-programa-educativo/id/<?=$idProducto;?>/entidad/<?=$empresa;?>" class="btn btn-sell"><strong>INSCRÍBETE</strong></a>								
+													<?php }else{ ?>
+															<a href="#<?=$idProducto;?>" class="btn btn-sell" id="Alias-<?=$idProducto;?>" onclick="seleccionaProducto('<?=$idProducto;?>','<?=$rempresa;?>');" ><i class="glyphicon glyphicon-shopping-cart"></i> <strong><?= $simboloMoneda . $reg->Precio; ?></strong></a>								
+													<?php }?>
+												</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                
+						</div>
+
+					<?php
+						}
+					?>	                       
+
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+
+    </div>
+</div>
+
+<script>
+	$('#botonConsultas').on('click', '', function (e) {
+		consultas('<?=$empresa; ?>','<?=$codPedido; ?>','<?=$idProducto; ?>','<?=$cod_cliente; ?>');
+	});				
+</script>
