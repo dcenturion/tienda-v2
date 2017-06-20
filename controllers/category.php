@@ -1,5 +1,4 @@
 <?php
-
 $this->respond("GET", "/[:categoryId]/?", function ($request, $response, $service) {
     $categoryId = $request->param('categoryId');
     
