@@ -163,9 +163,9 @@ function Main($Arg) {
 			//Actualiza Datos del cliente
 			$pedido = get("pedido");	
 			$estado = "Cerrado";
-			procesoCambiaEstadoProformasPedidos($pedido,$estado);
+			$return = procesoCambiaEstadoProformasPedidos($pedido,$estado);
 			
-		    WE("TRUE");
+		    WE($return);
 			
 		break;	
 	
@@ -596,6 +596,23 @@ function procesoCambiaEstadoProformasPedidos($pedido,$estado){
 	$rg = OwlPDO::insert('pedidos_cab', $data, $cnPDO);
 	$CodigoPedidosCab = $rg['lastInsertId']; 
 	
+	$data = array(
+	'Cliente' => $Clientes
+	, 'Entidad' => $Entidad
+	, 'Moneda' => $Moneda
+	, 'TipoComprobante' => $TipoComprobante
+	, 'TotalNeto' => $TotalNeto
+	, 'TotalBruto' => $TotalBruto
+	, 'FechaHoraCreacion' => $FechaHora
+	, 'FechaHoraActualizacion' => $FechaHora
+	, 'UsuarioCreacion' => $Entidad
+	, 'UsuarioActualizacion' => $Entidad
+	, 'Pedidos_Cab' => $CodigoPedidosCab
+	, 'Estado' => "Facturado"
+	);
+	$rg = OwlPDO::insert('venta', $data, $cnPDO);	
+	
+
 	$Query = " 
 		SELECT 
 		PD.Cantidad,
@@ -686,8 +703,7 @@ function procesoCambiaEstadoProformasPedidos($pedido,$estado){
 	$EmailSoporteCliente = $rg->EmailSoporteCliente;			
 	$NroTelefonoSoporteCliente = $rg->NroTelefonoSoporteCliente;	
 	$SubDominio = $rg->SubDominio;	
-	$ColorMenuHorizontal = $rg->ColorMenuHorizontal;	
-	
+	$ColorMenuHorizontal = $rg->ColorMenuHorizontal;		
 	$dominio = siteUrl();
 	
 	if( $ColorCabeceraEmail == "Ninguno"){  
@@ -740,6 +756,8 @@ function procesoCambiaEstadoProformasPedidos($pedido,$estado){
 	               , 'NombreReceptor' => $NombreReceptor, 'Asunto' => $Asunto
 				   );			
 	emailInscripcion($data,$Email,$cnPDO);
+	
+	return "TRUE";
 }
 
 ?>

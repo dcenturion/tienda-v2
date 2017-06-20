@@ -248,7 +248,7 @@ $('#botonConfirmarB').on('click', '', function (e) {
 });				
 function confirmarPago(codigoItem) {
         ///lanzamiento del API de culqui
-		 alertify.success("Procesando Datos");
+		alertify.success("Procesando Datos");
 		///Si el retorno del proceso de pago mediante culqui es TRUE, cierra la proforma 
 	    var ruta = '/system/_vistas/se_pedidos.php?Main=CerrarPedido&entidad=<?php echo $empresa; ?>&pedido=<?php echo $pedido; ?>';
 
@@ -259,9 +259,13 @@ function confirmarPago(codigoItem) {
            success: function(data)             
            {
 			
-			 
-			 // $('#MensajeId').html(data);
-			 location.href="/pago-finalizado/entidad/<?php echo $empresa; ?>/pedido/<?php echo $pedido; ?>";
+			    if(data=="TRUE"){
+				    location.href="/pago-finalizado/entidad/<?php echo $empresa; ?>/pedido/<?php echo $pedido; ?>";
+				}else{
+			        $('#MensajeId').html(data);					
+				}
+
+			 // location.href="/pago-finalizado/entidad/<?php echo $empresa; ?>/pedido/<?php echo $pedido; ?>";
            }
         });
 		///Si el retorno del proceso de pago mediante culqui es FALSE, deja a la proforma en un estado de intento fallido 		
